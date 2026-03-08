@@ -927,7 +927,7 @@ function SystemDetail({ system, positions, onClose }) {
   if (!system) return null;
   const systemIdx = SYSTEMS.findIndex((s) => s.id === system.id);
   return (
-    <div style={{
+    <div className="detail-panel" style={{
       marginTop: 24, padding: "32px 40px", background: "#FDFBF8", border: "1px solid #C8D9E8",
       borderTop: "3px solid #1B6CA8", borderRadius: 2, animation: "fadeSlideIn 0.3s ease"
     }}>
@@ -997,7 +997,7 @@ function SystemDetail({ system, positions, onClose }) {
 function ColumnDetail({ question, onClose }) {
   if (!question) return null;
   return (
-    <div style={{
+    <div className="detail-panel" style={{
       marginTop: 24, padding: "32px 40px", background: "#FDFBF8", border: "1px solid #D4C9BC",
       borderRadius: 2, position: "relative", animation: "fadeSlideIn 0.3s ease"
     }}>
@@ -1099,8 +1099,8 @@ function MatrixView({ onSelectPosition, selectedId, onSelectColumn, selectedColI
     (pos.variants || []).filter(v => isSystems ? v.systemsAnswers : v.answers);
 
   return (
-    <div style={{ overflowX: "auto", padding: "0 0 20px 0" }}>
-      <table style={{ borderCollapse: "collapse", width: "100%", minWidth: isSystems ? 860 : 780 }}>
+    <div className="matrix-scroll" style={{ overflowX: "auto", padding: "0 0 20px 0", WebkitOverflowScrolling: "touch" }}>
+      <table className="matrix-table" style={{ borderCollapse: "collapse", width: "100%", minWidth: isSystems ? 860 : 780 }}>
         <thead>
           <tr>
             <th style={{
@@ -1180,7 +1180,7 @@ function MatrixView({ onSelectPosition, selectedId, onSelectColumn, selectedColI
                     </div>
                     <div>
                       <div>{pos.name}</div>
-                      <div style={{ fontSize: 12, fontWeight: 400, color: "#8A7E72", fontStyle: "italic", marginTop: 2 }}>{pos.subtitle}</div>
+                      <div className="pos-subtitle" style={{ fontSize: 12, fontWeight: 400, color: "#8A7E72", fontStyle: "italic", marginTop: 2 }}>{pos.subtitle}</div>
                     </div>
                   </div>
                 </td>
@@ -1490,7 +1490,7 @@ function PositionSystems({ position }) {
 function PositionDetail({ position, onClose }) {
   if (!position) return null;
   return (
-    <div style={{
+    <div className="detail-panel" style={{
       marginTop: 32, padding: "40px 48px", background: "#FDFBF8", border: "1px solid #D4C9BC",
       borderRadius: 2, position: "relative", animation: "fadeSlideIn 0.35s ease"
     }}>
@@ -1587,7 +1587,7 @@ function PositionDetail({ position, onClose }) {
 function EssayStub({ title, subtitle, date, tags }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <div
+    <div className="essay-stub"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -1659,7 +1659,7 @@ export default function MachineConsciousness() {
   }, []);
 
   return (
-    <div style={{
+    <div className="possible-minds" style={{
       minHeight: "100vh", background: "#F2EDE6", color: "#2D2A26",
       fontFamily: "'Source Serif 4', Georgia, serif"
     }}>
@@ -1677,6 +1677,31 @@ export default function MachineConsciousness() {
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #F2EDE6; }
         ::-webkit-scrollbar-thumb { background: #C4B9AC; border-radius: 3px; }
+        @media (max-width: 768px) {
+          .possible-minds nav { padding-left: 20px !important; padding-right: 20px !important; }
+          .possible-minds header { padding: 100px 20px 60px !important; }
+          .possible-minds header h1 { font-size: 48px !important; }
+          .possible-minds header p { font-size: 16px !important; }
+          .possible-minds main { padding-left: 20px !important; padding-right: 20px !important; }
+          .possible-minds .matrix-scroll { margin: 0 -20px; padding: 0 20px 20px !important; -webkit-overflow-scrolling: touch; }
+          .possible-minds .matrix-table { min-width: 520px !important; font-size: 12px; }
+          .possible-minds .matrix-table th:first-child { min-width: 140px !important; padding-left: 20px !important; }
+          .possible-minds .matrix-table th:not(:first-child) { min-width: 52px !important; max-width: 72px !important; padding: 8px 6px !important; font-size: 9px !important; }
+          .possible-minds .matrix-table td:first-child { padding: 10px 12px !important; font-size: 13px !important; }
+          .possible-minds .matrix-table td:not(:first-child) { padding: 10px 6px !important; min-width: 52px !important; }
+          .possible-minds .matrix-table .pos-subtitle { font-size: 10px !important; }
+          .possible-minds .matrix-table td:not(:first-child) span { font-size: 10px !important; }
+          .possible-minds .reading-cards h3 { font-size: 16px !important; }
+          .possible-minds .reading-cards p { font-size: 13px !important; }
+          .possible-minds .reading-cards > div { grid-template-columns: 1fr !important; }
+          .possible-minds .detail-panel { padding: 24px 20px !important; }
+          .possible-minds .detail-panel h2 { font-size: 18px !important; }
+          .possible-minds .detail-panel h3 { font-size: 14px !important; }
+          .possible-minds .detail-panel p, .possible-minds .detail-panel li { font-size: 14px !important; }
+          .possible-minds .essay-stub h3 { font-size: 18px !important; }
+          .possible-minds .essay-stub p { font-size: 13px !important; }
+          .possible-minds footer { padding-left: 20px !important; padding-right: 20px !important; }
+        }
       `}</style>
 
       <nav style={{
@@ -1836,7 +1861,7 @@ export default function MachineConsciousness() {
                 fontFamily: "'Cormorant Garamond', serif", fontSize: 14, fontWeight: 600,
                 letterSpacing: "0.15em", textTransform: "uppercase", color: "#8A7E72", margin: "0 0 24px 0"
               }}>Reading the Pattern</h2>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+              <div className="reading-cards" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
                 {[
                   {
                     title: "The Deflationary Camp",
