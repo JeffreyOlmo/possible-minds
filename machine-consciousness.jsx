@@ -832,7 +832,7 @@ const SYSTEMS = [
   },
   {
     id: "microphysical-primitive",
-    short: "Primitive",
+    short: "Physical Primitive",
     full: "Microphysical Primitive (electron / quark / basic physical unit)",
     desc: "A single fundamental constituent of matter considered in isolation. It is the acid test for panpsychist and Russellian views: is consciousness built in at the very bottom, proto-built in, or absent until larger organization appears?",
     why: "This is where panpsychism and related views stop being metaphorical. If consciousness is intrinsic to the physical, the primitive column shows whether that means full micro-experience, proto-experience, or nothing at all."
