@@ -8,7 +8,7 @@ const POSITIONS = [
     color: "#2F4F4F",
     answers: [0,0,1,0,0.5,0,1,1],
     systemsAnswers: [0.5,1,0,1,0,1],
-    summary: "Consciousness is exhausted by its physical or functional description — there is no residue, no explanatory gap, nothing for Mary to learn that isn't already implicit in the functional facts. This row groups positions that share all core matrix commitments: RF proper, Illusionism, and Eliminative Materialism are identical at the matrix level. Higher-Order Thought Theory (HOT) and Global Workspace Theory (GWT) are variants that split on Degrees — HOT says consciousness is binary (NO), GWT says it is graded (YES) — which is why the parent cell is ~.",
+    summary: "Consciousness is exhausted by its physical or functional description — there is no residue, no explanatory gap, nothing for Mary to learn that isn't already implicit in the functional facts. Bites the bullet that mary learns nothing new, and that p-zombies are logically impossible.",
     cluster: [
       {
         name: "Reductive Functionalism",
@@ -110,7 +110,7 @@ const POSITIONS = [
     name: "Property Dualism",
     subtitle: "Chalmers, Jackson, Levine",
     color: "#8B4513",
-    answers: [1,1,1,1,0.5,0,1,0],
+    answers: [1,1,1,0.5,0.5,0,1,0],
     systemsAnswers: [0.5,1,0.5,1,0.5,1],
     summary: "Phenomenal properties are real and irreducible — they are not identical to any physical or functional property, nor entailed by any physical description. The hard problem is genuine: there is an explanatory gap between any complete physical account and the facts about experience. Zombies are conceivable. Consciousness supervenes on functional organization as a contingent nomological fact, not a logical necessity. Accepting physical causal closure while maintaining non-physical phenomenal properties creates enormous pressure toward epiphenomenalism — the central unresolved tension in the view.",
     sources: [
@@ -125,16 +125,10 @@ const POSITIONS = [
       {
         name: "Type-B Materialism",
         authors: "Papineau, Levine, Block",
-        answers: [0,1,1,1,0.5,0,1,1],
+        answers: [0,1,1,0,0.5,0,1,1],
         systemsAnswers: [1,1,0,1,0,1],
         note: "Zombies are conceivable but not metaphysically possible. Phenomenal concepts and physical/functional concepts have different modes of presentation for the same underlying property. The conceivability gap is real but tracks a conceptual gap, not a metaphysical one. Accepts the hard problem as a genuine cognitive phenomenon while denying it has metaphysical upshot.",
         matrixNote: "P-Zombies → NO (conceivable but not possible). This sub-variant is arguably its own position, sometimes called type-B physicalism, and can be seen as collapsing property dualism into a sophisticated materialism."
-      },
-      {
-        name: "Epiphenomenalism",
-        authors: "Huxley, early Jackson",
-        note: "The forced destination rather than a chosen position. If zombies are possible, physics is causally closed, and phenomenal properties are non-physical, then consciousness does no causal work. Consciousness is a 'mere epiphenomenon' — present, real, but causally inert like the hiss of a steam engine. The view is internally consistent but violates the intuition that our experiences actually explain our behavior.",
-        matrixNote: "A logical consequence of combining YES on P-Zombies with YES on Causal Closure, not an independent choice."
       }
     ],
     explanations: [
@@ -183,7 +177,7 @@ const POSITIONS = [
     name: "Integrated Information Theory",
     subtitle: "Tononi, Koch",
     color: "#2E4057",
-    answers: [0,1,0,1,1,0.5,1,1],
+    answers: [0,1,0,0.5,1,0.5,1,1],
     systemsAnswers: [0.75,1,0.75,0.75,0,0.75],
     summary: "Consciousness is identical to maximally irreducible integrated information (Φ). Any system with non-zero Φ is conscious to some degree. Anti-functionalist: causal architecture matters, not input-output behavior. A feedforward network has Φ = 0 regardless of complexity. Two systems with identical function can differ in consciousness if their internal causal structure differs. Claims to dissolve the combination problem by identifying consciousness at the system level where Φ is maximized, not by building it up from parts.",
     sources: [
@@ -207,7 +201,7 @@ const POSITIONS = [
       {
         name: "IIT without the Exclusion Postulate",
         authors: "Critics including Bayne",
-        answers: [0,1,0,1,1,1,1,1],
+        answers: [0,1,0,0.5,1,1,1,1],
         systemsAnswers: [0.75,1,0.75,0.75,0,0.75],
         note: "The exclusion postulate (consciousness exists only at the level of maximal Φ) is the most controversial part of IIT. Without it, the combination problem returns — multiple overlapping systems each have their own Φ and there is no principled way to pick one as the subject. Several philosophers accept the Φ criterion while rejecting exclusion.",
         matrixNote: "Combination → YES rather than ~."
@@ -643,7 +637,7 @@ const QUESTIONS = [
       {
         name: "Structural Duplicate",
         desc: "Physics specifies only relational and causal structure. A 'physical duplicate' is therefore a structural duplicate — same causal-mathematical structure, same dispositions, same relational properties. What is left open is the intrinsic nature filling that structure.",
-        scenario: "Picture a being that is your exact structural double — every atom in the same position, every neuron firing at the same millisecond, every electrochemical gradient identical. From the outside this being is indistinguishable from you. It navigates the world, converses, laughs, winces when it stubs its toe, says 'that hurt.' But here is the question — is there anything it is like to be this being? Is there an inner light on, or is the machinery running in the dark? The zombie thought experiment says this being is conceivable: we can consistently imagine all the physical structure running without any accompanying experience. If that's right, then consciousness is something beyond the structural-physical — because the structure is all there and nobody is home."
+        scenario: "Picture a being that is your exact structural double, who lacks consciousness. Every atom in the same position, every neuron firing at the same millisecond, every electrochemical gradient identical. From the outside this being is indistinguishable from you. It navigates the world, converses, laughs, winces when it stubs its toe, says 'that hurt.' But there is nothing it is like to be this being. There is no inner light on, it is a machine running in the dark. The zombie thought experiment asks if this being is conceivable: can we consistently imagine all the physical structure running without any accompanying experience? If a pzombie IS conceivable, that is, there is no contradiction in its description,then consciousness is something beyond the structural-physical — because the structure doesn't logically necessitate consciousness"
       },
       {
         name: "Conceivability → Possibility",
@@ -652,7 +646,7 @@ const QUESTIONS = [
       {
         name: "Russellian Zombies",
         desc: "A world with the same structural physics but with non-phenomenal (inert) quiddities filling the Russellian gap. Distinct from standard zombies: the Russellian zombie differs in its intrinsic physical nature, not just in the presence of phenomenal properties. The key question for panpsychists.",
-        scenario: "Physics describes everything in relational and dispositional terms — mass is a disposition to resist acceleration, charge is a disposition to repel like charges. What actually fills in this structure — what matter intrinsically is — physics never says. Now imagine a world with identical structural physics to ours: same particles, same forces, same causal web. But the intrinsic natures filling that structure are inert — not experiential, just blank. These 'Russellian zombies' have the same relational physics but no phenomenal consciousness, because in our world phenomenal properties happen to fill the intrinsic natures, not the relational structure. Is such a world conceivable? If yes, then even panpsychism — which claims consciousness is intrinsic to the physical — faces a version of the hard problem: why are our intrinsic natures phenomenal rather than inert?"
+        scenario: "Physics describes everything in relational and dispositional terms — mass is a disposition to resist acceleration, charge is a disposition to repel like charges. What actually fills in this structure — what matter intrinsically is — physics never says. Now imagine a world with identical structural physics to ours: same particles, same forces, same causal web, but the intrinsic natures filling that structure are nonexperiential. These 'Russellian zombies' have the same relational physics but no phenomenal consciousness, because in our world phenomenal properties happen to fill the intrinsic natures, not the relational structure. Is such a world conceivable? If yes, then even panpsychism — which claims consciousness is intrinsic to the physical — faces a version of the hard problem: why are our intrinsic natures phenomenal rather than nonphenomenal? Problems familiar to the property dualist re-arise for the panpsychist: A russellian zombie says and beleives that he is conscious, but he is wrong. Progress on refuting the conceivability of nonphenomenal intrinsic natures would constitute significant progress in philosophy of mind."
       },
       {
         name: "Kripkean Necessity",
@@ -688,12 +682,12 @@ const QUESTIONS = [
       {
         name: "Fading Qualia",
         desc: "If silicon chips duplicated neuronal function but produced fading qualia, you'd continue reporting normal experience while going dark inside. Chalmers argues this is absurd.",
-        scenario: "Imagine a surgery where your neurons are replaced one by one with silicon chips, each performing exactly the same input-output function as the neuron it replaces. After each swap you feel fine — behavior and reports are unchanged. Now suppose each new chip does the job identically, but produces slightly duller experience: colors slightly washed out, sounds slightly flat. After thousands of replacements, your qualia have faded entirely — you're a functional zombie. Yet at no point could you have noticed, because noticing is itself a functional process. You would still say 'I see the red apple clearly.' Chalmers' claim: this is incoherent. A rational being cannot be systematically wrong about whether it has experiences. Therefore experience must track functional organization — what the system does, not what it's made of."
+        scenario: "Imagine a surgery where your neurons are replaced one by one with silicon chips, each performing exactly the same input-output function as the neuron it replaces. After each swap you feel fine — behavior and reports are unchanged. Eventually, your brain is entirely silicon. Are you still conscious? If you are not, it must have been the case that as new chips are introduced, your consciousness fades gradually, until it finally disappears. Yet at no point could you have noticed, because noticing is itself a functional process, which the chips replicate perfectly. You would still say 'I see the red apple clearly.' Chalmers' claim: it is implausible that a person's consciousness could fade away without them noticing. Therefore experience must track functional organization — what the system does, not what it's made of."
       },
       {
         name: "Dancing Qualia",
-        desc: "If carbon and silicon chips doing the same job produced different qualia, flipping between them would cause qualia to wildly fluctuate with no functional signature — absurd.",
-        scenario: "Suppose there are two devices that perform the same neural function equally well — an organic chip and a silicon chip — but they produce different phenomenal qualities when active. A surgeon can flip between them instantly, like flipping a switch. Each time they switch you from organic to silicon, the felt quality of your experience shifts — red looks different, music sounds different. But your reports don't change, because reports are functional, and both chips do the same functional job. So your inner experience is 'dancing' wildly while you sit calmly saying 'everything seems normal.' Chalmers argues this scenario is absurd — a reductio. The dancing would be undetectable and arbitrary. Therefore same function must mean same experience."
+        desc: "If two physically different systems are functionally isomorphic yet generate different qualia, then switching between them should alter conscious experience without producing any corresponding change in cognition, behavior, or verbal report. Chalmers treats this as a reductio of the claim that qualia can vary independently of functional organization.",
+        scenario: "Assume two components—an organic neural circuit and a silicon-based replacement—are functionally identical: each preserves the same causal role within the overall cognitive system. Now suppose, contrary to functionalism, that they nonetheless produce different phenomenal states. If a surgeon could switch instantaneously between the two while preserving all functional relations, the subject's experience would change—for example, colors might look different or sounds might have a different felt character. Yet, because all functional organization remains fixed, the subject's judgments, memory access, discriminatory capacities, and verbal reports would remain unchanged. The result would be a case in which phenomenal experience systematically varies while the subject is functionally incapable of noticing or reporting any difference. Chalmers argues that such 'dancing qualia' are implausible: it is not credible that experience could fluctuate dramatically with no effect on cognitive access or behavioral output. He takes this to support the conclusion that identical functional organization entails identical conscious experience."
       },
       {
         name: "Chinese Room",
@@ -708,7 +702,7 @@ const QUESTIONS = [
   },
   {
     short: "Russellian Gap",
-    full: "Does physics leave the intrinsic nature of matter as an open question?",
+    full: "Does qualia fill the Russellian gap — are phenomenal properties the intrinsic nature of matter?",
     subsumes: [
       {
         name: "Structural Realism",
@@ -788,7 +782,7 @@ const QUESTIONS = [
       {
         name: "The Utterance Problem",
         desc: "When you say 'I am having a vivid red experience,' is that utterance caused by the phenomenal experience, or merely by a functional brain state that correlates with it?",
-        scenario: "You are having experiences right now — the experience of reading these words, perhaps a feeling of curiosity or interest. At some point you will say, or think, 'I am conscious.' Now here is the uncomfortable question for property dualism: what caused you to form that belief? Under causal closure, every belief and utterance is caused by physical brain states. But phenomenal properties — on property dualism — are non-physical. So the belief 'I am conscious' was caused by a functional brain state, not by the phenomenal experience itself. The qualia were along for the ride. They had no causal role in producing your conviction that they exist. Chalmers (2015) calls this the 'paradox of phenomenal judgment': if consciousness doesn't cause your reports about consciousness, your introspective reports are unreliable guides to whether you're conscious at all. And then why believe you are?"
+        scenario: "You are having experiences right now — the experience of reading these words, perhaps a feeling of curiosity or interest. At some point you will say, or think, 'I am conscious.' Now here is the uncomfortable question for property dualism: what caused you to form that belief? Under causal closure, every belief and utterance is caused by physical brain states. But phenomenal properties — on property dualism — are non-physical. So the belief 'I am conscious' was caused by a functional brain state, not by the phenomenal experience itself. The qualia were along for the ride. They had no causal role in producing your conviction that they exist. Strikingly, consider that your pzombie twin, who is not conscious, says and beleives just as you do that he is conscious; he might say it is the one thing he is totally certain of, he thinks of the pzombie thought experiment and is convinced that his situation is different, yet he is wrong. Chalmers (2015) calls this the 'paradox of phenomenal judgment': if consciousness doesn't cause your reports about consciousness, your introspective reports are unreliable guides to whether you're conscious at all. And then why believe you are?"
       },
       {
         name: "Kim's Exclusion Argument",
@@ -1809,7 +1803,7 @@ export default function MachineConsciousness() {
                 fontFamily: "'JetBrains Mono', monospace", fontSize: 11
               }}>
                 <span><span style={{ color: "#2D6A4F", fontWeight: 700 }}>YES</span> <span style={{ color: "#8A7E72" }}>affirms</span></span>
-                {matrixMode === "systems" && <span><span style={{ color: "#4A7B9D", fontWeight: 700 }}>YES*</span> <span style={{ color: "#8A7E72" }}>yes, with caveats</span></span>}
+                {matrixMode === "systems" && <span><span style={{ color: "#4A7B9D", fontWeight: 700 }}>YES*</span> <span style={{ color: "#8A7E72" }}>affirms, with caveats</span></span>}
                 <span><span style={{ color: "#9B2226", fontWeight: 700 }}>NO</span> <span style={{ color: "#8A7E72" }}>denies</span></span>
                 <span><span style={{ color: "#B08D57", fontWeight: 700 }}>~</span> <span style={{ color: "#8A7E72" }}>complicated</span></span>
                 <span><span style={{ color: "#999", fontWeight: 600 }}>N/A</span> <span style={{ color: "#8A7E72" }}>rejects framing</span></span>
