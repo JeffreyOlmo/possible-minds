@@ -1809,7 +1809,7 @@ export default function MachineConsciousness() {
                 fontFamily: "'JetBrains Mono', monospace", fontSize: 11
               }}>
                 <span><span style={{ color: "#2D6A4F", fontWeight: 700 }}>YES</span> <span style={{ color: "#8A7E72" }}>affirms</span></span>
-                {matrixMode === "systems" && <span><span style={{ color: "#4A7B9D", fontWeight: 700 }}>YES*</span> <span style={{ color: "#8A7E72" }}>conscious, but nonhuman phenomenology</span></span>}
+                {matrixMode === "systems" && <span><span style={{ color: "#4A7B9D", fontWeight: 700 }}>YES*</span> <span style={{ color: "#8A7E72" }}>yes, with caveats</span></span>}
                 <span><span style={{ color: "#9B2226", fontWeight: 700 }}>NO</span> <span style={{ color: "#8A7E72" }}>denies</span></span>
                 <span><span style={{ color: "#B08D57", fontWeight: 700 }}>~</span> <span style={{ color: "#8A7E72" }}>complicated</span></span>
                 <span><span style={{ color: "#999", fontWeight: 600 }}>N/A</span> <span style={{ color: "#8A7E72" }}>rejects framing</span></span>
@@ -1856,7 +1856,7 @@ export default function MachineConsciousness() {
                   },
                   {
                     title: "The Nonreductionists",
-                    desc: "Property Dualism, Interactionist Dualism, Biological Naturalism — YES to zombies, YES to Mary's Room. Consciousness is real, irreducible, and not intrinsic to the physical as such. The hard problem is genuine and may be permanent. Panpsychism can be read as a synthesis: it takes the Separatists' insistence that consciousness is irreducible and grafts it onto the Deflationists' insistence that everything is physical. The cost is the combination problem.",
+                    desc: "Property Dualism, Interactionist Dualism, Biological Naturalism — YES to zombies, YES to Mary's Room. Consciousness is real, irreducible, and not intrinsic to the physical as such. The hard problem is genuine and may be permanent.",
                     border: "#7B2D8B"
                   }
                 ].map((c, i) => (
