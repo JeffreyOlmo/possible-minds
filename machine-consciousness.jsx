@@ -1683,14 +1683,15 @@ export default function MachineConsciousness() {
           .possible-minds header h1 { font-size: 48px !important; }
           .possible-minds header p { font-size: 16px !important; }
           .possible-minds main { padding-left: 20px !important; padding-right: 20px !important; }
-          .possible-minds .matrix-scroll { margin: 0 -20px; padding: 0 20px 20px !important; -webkit-overflow-scrolling: touch; }
-          .possible-minds .matrix-table { min-width: 520px !important; font-size: 12px; }
-          .possible-minds .matrix-table th:first-child { min-width: 140px !important; padding-left: 20px !important; }
-          .possible-minds .matrix-table th:not(:first-child) { min-width: 52px !important; max-width: 72px !important; padding: 8px 6px !important; font-size: 9px !important; }
-          .possible-minds .matrix-table td:first-child { padding: 10px 12px !important; font-size: 13px !important; }
-          .possible-minds .matrix-table td:not(:first-child) { padding: 10px 6px !important; min-width: 52px !important; }
-          .possible-minds .matrix-table .pos-subtitle { font-size: 10px !important; }
-          .possible-minds .matrix-table td:not(:first-child) span { font-size: 10px !important; }
+          .possible-minds .matrix-scroll { margin: 0 -20px; padding: 0 20px 16px !important; -webkit-overflow-scrolling: touch; }
+          .possible-minds .matrix-table { min-width: 380px !important; font-size: 11px; }
+          .possible-minds .matrix-table th:first-child { min-width: 100px !important; padding: 6px 12px 6px 16px !important; font-size: 8px !important; }
+          .possible-minds .matrix-table th:not(:first-child) { min-width: 36px !important; max-width: 44px !important; padding: 6px 2px !important; font-size: 8px !important; }
+          .possible-minds .matrix-table td:first-child { padding: 6px 10px !important; font-size: 11px !important; }
+          .possible-minds .matrix-table td:not(:first-child) { padding: 6px 2px !important; min-width: 36px !important; }
+          .possible-minds .matrix-table .pos-subtitle { font-size: 9px !important; }
+          .possible-minds .matrix-table td:not(:first-child) span { font-size: 9px !important; }
+          .possible-minds .matrix-table button { font-size: 9px !important; padding: 0 !important; }
           .possible-minds .reading-cards h3 { font-size: 16px !important; }
           .possible-minds .reading-cards p { font-size: 13px !important; }
           .possible-minds .reading-cards > div { grid-template-columns: 1fr !important; }
@@ -1749,7 +1750,7 @@ export default function MachineConsciousness() {
         <div style={{
           fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 500,
           letterSpacing: "0.25em", textTransform: "uppercase", color: "#8A7E72", marginBottom: 24
-        }}>The Core Question of Our Age</div>
+        }}>Mapping the Theories of Consciousness</div>
         <h1 style={{
           fontFamily: "'Cormorant Garamond', serif", fontSize: 96, fontWeight: 700,
           lineHeight: 1.05, margin: "0 0 0 -4px", color: "#2D2A26", letterSpacing: "-0.02em"
