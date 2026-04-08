@@ -343,6 +343,35 @@ function EssaysSection() {
 }
 
 // ─────────────────────────────────────────────
+// About section
+// ─────────────────────────────────────────────
+
+function AboutSection() {
+  return (
+    <div style={{ maxWidth: 560, margin: "0 auto", padding: "80px 24px 80px" }}>
+      <h1 style={{
+        fontFamily: "'Cormorant Garamond', serif", fontSize: 44, fontWeight: 700,
+        color: "#1a1816", margin: "0 0 32px 0", lineHeight: 1.1
+      }}>About</h1>
+
+      <div style={{ fontFamily: "'Source Serif 4', serif", fontSize: 17, lineHeight: 1.85, color: "#4A4540" }}>
+        <p style={{ margin: "0 0 24px 0" }}>
+          Machines are being built that may be conscious. Whether they are — and what that
+          would even mean — depends on questions philosophy has been wrestling with for centuries
+          and has not resolved.
+        </p>
+        <p style={{ margin: "0 0 0 0" }}>
+          This site is a humble attempt to clarify those conceptual foundations — for the author
+          and for anyone else who wants to think carefully about the mind-body problem before
+          the engineering outpaces the philosophy. The taxonomy draws on Chalmers' framework,
+          sharpened where possible.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
 // Main app with navigation
 // ─────────────────────────────────────────────
 
@@ -354,6 +383,7 @@ function App() {
     { key: "matrix", label: "Matrix" },
     { key: "positions", label: "Positions" },
     { key: "essays", label: "Essays" },
+    { key: "about", label: "About" },
   ];
 
   return (
@@ -411,6 +441,7 @@ function App() {
         {section === "matrix" && <MatrixSection />}
         {section === "positions" && <PositionsExplorer />}
         {section === "essays" && <EssaysSection />}
+        {section === "about" && <AboutSection />}
       </div>
 
       {/* Footer */}

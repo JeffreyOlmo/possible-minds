@@ -1340,7 +1340,6 @@ function EssayStub({ title, subtitle, date, tags }) {
 export function MatrixSection() {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [selectedCol, setSelectedCol] = useState(null);
-  const [matrixMode, setMatrixMode] = useState("arguments");
   const detailRef = useRef(null);
   const colRef = useRef(null);
 
@@ -1357,14 +1356,7 @@ export function MatrixSection() {
   }, []);
 
   const selectedPos = POSITIONS.find(p => p.id === selectedPosition);
-  const selectedQuestion = selectedCol !== null && matrixMode === "arguments" ? QUESTIONS[selectedCol] : null;
-  const selectedSystem = selectedCol !== null && matrixMode === "systems" ? SYSTEMS[selectedCol] : null;
-
-  const handleModeChange = useCallback((newMode) => {
-    setMatrixMode(newMode);
-    setSelectedCol(null);
-    setSelectedPosition(null);
-  }, []);
+  const selectedQuestion = selectedCol !== null ? QUESTIONS[selectedCol] : null;
 
   return (
     <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px 80px" }}>
@@ -1376,58 +1368,17 @@ export function MatrixSection() {
         fontFamily: "'Source Serif 4', serif", fontSize: 17, lineHeight: 1.85,
         color: "#4A4540", maxWidth: 680, margin: "0 0 32px 0"
       }}>
-        {matrixMode === "arguments"
-          ? "Each column is a discriminating question — the decision points that separate the positions. Each row is a position's response. Click any column header to see the arguments it subsumes. Click any row to expand the position's detailed responses."
-          : "Shift the matrix from abstract commitments to concrete verdicts. Each column is a candidate system — click any system header to see how the positions divide."}
+        Each column is a discriminating question — the decision points that separate the positions.
+        Each row is a position's response. Click any column header to see the arguments it subsumes.
+        Click any row to expand the position's detailed responses.
       </p>
-      <div style={{
-        marginBottom: 32,
-        display: "inline-flex",
-        padding: 4,
-        background: "#E8E2DA",
-        border: "1px solid #D4C9BC",
-        borderRadius: 4,
-        gap: 4
-      }}>
-        {[
-          { key: "arguments", label: "Arguments" },
-          { key: "systems", label: "Systems" }
-        ].map((item) => {
-          const active = matrixMode === item.key;
-          const accent = item.key === "systems" ? "#1B6CA8" : "#5B3A29";
-          return (
-            <button
-              key={item.key}
-              onClick={() => handleModeChange(item.key)}
-              style={{
-                background: active ? "#FDFBF8" : "transparent",
-                border: active ? `1px solid ${accent}55` : "1px solid transparent",
-                color: active ? accent : "#8A7E72",
-                cursor: "pointer",
-                padding: "9px 16px",
-                borderRadius: 2,
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 11,
-                fontWeight: active ? 600 : 500,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                transition: "all 0.2s"
-              }}
-            >
-              {item.label}
-            </button>
-          );
-        })}
-      </div>
       <div style={{
         marginBottom: 32, display: "flex", gap: 20, flexWrap: "wrap",
         fontFamily: "'JetBrains Mono', monospace", fontSize: 11
       }}>
         <span><span style={{ color: "#2D6A4F", fontWeight: 700 }}>YES</span> <span style={{ color: "#8A7E72" }}>affirms</span></span>
-        {matrixMode === "systems" && <span><span style={{ color: "#4A7B9D", fontWeight: 700 }}>YES*</span> <span style={{ color: "#8A7E72" }}>affirms, with caveats</span></span>}
         <span><span style={{ color: "#9B2226", fontWeight: 700 }}>NO</span> <span style={{ color: "#8A7E72" }}>denies</span></span>
         <span><span style={{ color: "#B08D57", fontWeight: 700 }}>~</span> <span style={{ color: "#8A7E72" }}>complicated</span></span>
-        <span><span style={{ color: "#999", fontWeight: 600 }}>N/A</span> <span style={{ color: "#8A7E72" }}>rejects framing</span></span>
       </div>
 
       <MatrixView
@@ -1435,15 +1386,11 @@ export function MatrixSection() {
         selectedId={selectedPosition}
         onSelectColumn={handleSelectColumn}
         selectedColIdx={selectedCol}
-        mode={matrixMode}
+        mode="arguments"
       />
 
       <div ref={colRef}>
-        {matrixMode === "arguments" ? (
-          <ColumnDetail question={selectedQuestion} onClose={() => setSelectedCol(null)} />
-        ) : (
-          <SystemDetail system={selectedSystem} positions={POSITIONS} onClose={() => setSelectedCol(null)} />
-        )}
+        <ColumnDetail question={selectedQuestion} onClose={() => setSelectedCol(null)} />
       </div>
 
       <div ref={detailRef}>
