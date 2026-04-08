@@ -1,4 +1,29 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, createElement } from "react";
+
+// ─────────────────────────────────────────────
+// Simple inline markdown: **bold** and *italic*
+// ─────────────────────────────────────────────
+
+function renderMd(text) {
+  if (!text) return text;
+  const parts = [];
+  let key = 0;
+  // Split on **bold** and *italic* patterns
+  const regex = /(\*\*(.+?)\*\*|\*(.+?)\*)/g;
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
+    if (match[2]) {
+      parts.push(createElement("strong", { key: key++ }, match[2]));
+    } else if (match[3]) {
+      parts.push(createElement("em", { key: key++ }, match[3]));
+    }
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts.length ? parts : text;
+}
 
 // ─────────────────────────────────────────────
 // Data
@@ -8,28 +33,26 @@ const STEPS = [
   {
     id: "mary",
     title: "The Knowledge Argument",
-    setup: `Mary is a scientist who specializes in the physics and neuroscience of color vision. She knows every physical fact about what happens when a person sees red: the wavelengths of light, the photochemistry of retinal receptors, the signal propagation through the lateral geniculate nucleus, the activation patterns in cortical area V4, the downstream effects on memory, language, and behavior. She knows every structural, relational, dynamical, and functional fact about color processing — the complete physical story, leaving nothing out.
+    setup: `Mary is a scientist who specializes in the physics and neuroscience of color vision. She knows every physical fact about what happens when a person sees red: the wavelengths of light, the photochemistry of retinal receptors, the signal propagation through the lateral geniculate nucleus, the activation patterns in cortical area V4, the downstream effects on memory, language, and behavior. She knows every structural, relational, dynamical, and functional fact about color processing — the complete physical story.
 
-By "physical facts" we mean the structural-relational properties of the world as described by physical law: how things relate to each other, how they are disposed to behave, how they evolve over time. Physics describes reality in terms of structure and dynamics — what things *do*, not what they intrinsically *are*.
-
-Her knowledge is not merely extensive. It is, by stipulation, complete: every fact about color vision that is expressible in the vocabulary of a completed physics. She can predict exactly what a subject will say, do, and discriminate when presented with any colored stimulus. She can specify the precise neural basis of every color-related capacity.
+Her knowledge is not merely extensive. It is, by stipulation, complete: every fact about color vision that is expressible in the vocabulary of a completed physics. By *physics* we mean the structural-relational properties of the world as described by physical law: how things relate to each other, how they are disposed to behave, how they evolve over time. Mary can thus predict exactly what a subject will say, do, and discriminate when presented with any colored stimulus. She can specify the precise neural basis of every color-related capacity.
 
 But she has spent her entire life in a black-and-white room. She has never seen color.
 
-One day she leaves the room and sees a red tomato. The question: is there a true proposition she can now affirm that she could not have derived — even in principle — from her complete physical knowledge of color vision?`,
+One day she leaves the room and sees a red apple. The question: is there a true proposition she can now affirm that she could not have derived — even in principle — from her complete physical knowledge of color vision?`,
     question: "Does Mary learn a new fact?",
     subtitle: "Can the phenomenal facts be deduced from the complete physical description?",
     options: [
       {
         label: "No — the phenomenal facts are deducible from the physical facts",
         short: "No new fact",
-        desc: "Mary already had the informational resources to derive every fact about the world, including facts about experience. What she gains upon seeing red is a new ability or mode of acquaintance — not a new proposition. The complete physical description entails all the facts; nothing is left out.",
+        desc: "Mary already had the information to derive every fact about the world, including what red looks like. What she gains upon seeing red is a new ability or mode of acquaintance — not a new proposition.",
         value: "no_gap"
       },
       {
         label: "Yes — the phenomenal facts are not deducible from the physical facts",
         short: "New knowledge",
-        desc: "The complete physical description of the world — every structural, relational, dynamical, and functional fact — does not entail what it is like to see red. There is a true proposition Mary could not have derived from her physical knowledge, no matter how much she reasoned. The phenomenal facts are not a priori deducible from the physical facts.",
+        desc: "The complete physical description of the world does not entail what it is like to see red. There is a true proposition Mary could not have derived from her physical knowledge, no matter how much she reasoned.",
         value: "gap"
       }
     ],
@@ -97,7 +120,7 @@ The question is not whether zombies are likely or even physically possible. The 
       {
         label: "No — the scenario is not genuinely coherent",
         short: "Not conceivable",
-        desc: "A being that duplicates all functional and physical organization thereby satisfies every condition for consciousness. The zombie scenario smuggles in an incoherent separation between physical structure and consciousness.",
+        desc: "A being that duplicates all functional and physical organization necessarily satisfies every condition for consciousness.",
         value: "no_gap"
       },
       {
@@ -277,7 +300,7 @@ There is an alternative: consciousness causes the same physical effects that the
       {
         label: "No — consciousness is causally inert",
         short: "No",
-        desc: "Physical states cause conscious states, but conscious states cause nothing. The experience of deciding to act plays no role in the action. This follows from the conjunction of your prior commitments.",
+        desc: "Physical states cause conscious states, but conscious states cause nothing. The experience of deciding to act plays no role in the action.",
         value: "inert"
       },
       {
@@ -564,7 +587,7 @@ But the decomposition problem has its own challenges. Why do individual subjects
   {
     id: "functionalism",
     title: "Substrate Independence",
-    setup: `One final question, orthogonal to the decision tree above.
+    setup: `One final question, orthogonal to the decision tree above. The previous questions concerned logical necessitation — whether the physical facts *logically* fix the phenomenal facts, across all possible worlds. This question concerns natural supervenience — whether, *in our world*, consciousness tracks functional organization or depends on the specific physical substrate.
 
 Suppose each neuron in your brain can be replaced with a silicon chip that performs the same functional role — same inputs, same outputs, same causal relations with neighboring cells. Now suppose the replacement is reversible: at each neural site, a switch can flip between the biological neuron and the silicon chip.
 
@@ -574,20 +597,20 @@ But here is the critical point: your functional organization is unchanged throug
 
 This means your subjective experience could be undergoing radical changes — or disappearing entirely — while you remain completely oblivious. You would sincerely report that nothing has changed. You would judge your experience to be constant. You would have no access whatsoever to the fact that your qualia are dancing.
 
-The question is whether this is a coherent possibility. Can a subject be oblivious to changes in — or the absence of — its own conscious experience?`,
+The question is not whether this is conceivable or *logically* possible, but whether this is empirically possible. Is a subject in some cases oblivious to changes in — or the absence of — its own conscious experience?`,
     question: "Can a subject be oblivious to changes in its own experience?",
     subtitle: "If your qualia shifted while your functional states remained constant, would you notice?",
     options: [
       {
-        label: "No — this is incoherent. Function determines experience.",
+        label: "No — function determines experience.",
         short: "Functionalist",
-        desc: "A subject cannot be systematically wrong about whether its experience is changing. If your introspective judgments are unchanged, your experience is unchanged. Consciousness supervenes on functional organization.",
+        desc: "In our world, a subject is never systematically wrong about whether its experience is changing — this does not happen. If your introspective judgments are unchanged, your experience is unchanged. Consciousness naturally supervenes on functional organization.",
         value: "functionalist"
       },
       {
         label: "Yes — substrate can affect experience independently of function",
         short: "Substrate-dependent",
-        desc: "It is coherent for experience to change while functional organization — including introspection — remains constant. Introspective judgments track functional states, not phenomenal states directly. The substrate contributes to consciousness in a way that function does not capture.",
+        desc: "It is empirically possible for experience to change while functional organization — including introspection — remains constant. Introspective judgments track functional states, not phenomenal states directly. The substrate contributes to consciousness in a way that function does not capture.",
         value: "substrate"
       }
     ],
@@ -634,19 +657,19 @@ function getPosition(answers) {
 
   let base;
   // "Structure fixes intrinsics" collapses the ontological gap — re-routes to physicalism
-  if (noGap) base = { id: "type-a", name: "Type-A Materialism", aka: "Eliminativism, illusionism, analytic functionalism, logical behaviorism, deflationism", desc: "The physical facts logically necessitate the phenomenal facts, and this necessitation is knowable a priori — the phenomenal facts are deducible from a complete physical description. There is no epistemic gap. The hard problem dissolves into the easy problems.", color: "#4A3728" };
-  else if (answers.mary === "gap" && answers.zombies === "no_gap") base = { id: "type-b", name: "Type-B Materialism", aka: "A posteriori physicalism, the phenomenal concept strategy, psychophysical identity theory", desc: "The physical facts logically necessitate the phenomenal facts — a physical duplicate necessarily has the same consciousness (zombies are incoherent). But this necessitation is not knowable a priori: Mary learns something new upon seeing red. The phenomenal facts cannot be deduced from the physical description. Consciousness is identical to a physical property; the identity is a posteriori necessary, like water = H₂O.", color: "#1B3A6B" };
-  else if (hasGap && answers.ontological === "no_ont_gap") base = { id: "type-b", name: "Type-B Materialism", aka: "A posteriori physicalism, the phenomenal concept strategy, psychophysical identity theory", desc: "The physical facts logically necessitate the phenomenal facts, but this necessitation is not knowable a priori — the phenomenal facts cannot be deduced from the physical description. Consciousness is identical to a physical property; the identity is a posteriori necessary. The permanent epistemic gap (failure of deducibility) arises from the unique cognitive character of phenomenal concepts, not from a failure of necessitation.", color: "#1B3A6B" };
-  else if (answers.ontological === "ont_gap" && answers.closure === "open") base = { id: "type-d", name: "Type-D Dualism (Interactionism)", aka: "Substance dualism, property dualism with downward causation, emergentist interactionism", desc: "The physical facts do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the structural-relational description and causally affects the physical world. The causal structure of physics is not self-contained — consciousness plays an irreducible causal role.", color: "#6B2D48" };
-  else if (answers.ontological === "ont_gap" && answers.closure === "closed" && answers.causation === "inert" && answers.russellian !== "russellian") base = { id: "type-e", name: "Type-E Dualism (Epiphenomenalism)", aka: "Property epiphenomenalism, parallelist dualism", desc: "The physical facts do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the structural-relational description and is causally inert. Physical states cause conscious states, but conscious states cause nothing. This follows from the conjunction of the failure of necessitation and causal closure.", color: "#4A3B6B" };
-  else if (answers.ontological === "ont_gap" && answers.closure === "closed" && answers.causation === "overdetermination") base = { id: "type-o", name: "Type-O Dualism (Overdetermination)", aka: "Causal overdetermination, dual-causation dualism", desc: "The physical facts do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the structural-relational description but is causally efficacious via systematic overdetermination. Every physical effect of consciousness also has a sufficient physical cause.", color: "#6B5B2D" };
-  else if (answers.russellian === "russellian" && answers.constitutive === "constitutive" && answers.grounding_type === "transparent") base = { id: "type-f-const-a", name: "Type-F Monism — Constitutive (Transparent)", aka: "Constitutive Russellian panpsychism (type-A), constitutive panprotopsychism, neutral monism", desc: "Consciousness is the intrinsic nature of the physical. Macroexperience is grounded in microexperience, and this grounding is in principle transparent — macro-phenomenal facts are deducible from micro-phenomenal and structural facts. The combination problem is a research challenge, not a principled barrier.", color: "#5B4A00" };
-  else if (answers.russellian === "russellian" && answers.constitutive === "constitutive" && answers.grounding_type === "opaque") base = { id: "type-f-const-b", name: "Type-F Monism — Constitutive (Opaque)", aka: "Constitutive Russellian panpsychism (type-B), brute-grounding panpsychism", desc: "Consciousness is the intrinsic nature of the physical. Macroexperience is grounded in microexperience, but the grounding is a posteriori necessary — not deducible even in principle from the micro-level facts. The hard problem has been relocated from the physical-phenomenal gap to the micro-macro phenomenal gap.", color: "#5B4A00" };
-  else if (answers.russellian === "russellian" && answers.constitutive === "constitutive") base = { id: "type-f-const", name: "Type-F Monism — Constitutive", aka: "Constitutive Russellian panpsychism, panprotopsychism, neutral monism", desc: "Consciousness is the intrinsic nature of the physical, and macroexperience is grounded in microexperience. The combination problem is the central open question.", color: "#5B4A00" };
-  else if (answers.russellian === "russellian" && answers.constitutive === "non_constitutive" && answers.nonconst_type === "emergent") base = { id: "type-f-emerg", name: "Type-F Monism — Non-constitutive Emergent", aka: "Emergent Russellian panpsychism, emergent panprotopsychism", desc: "Consciousness is the intrinsic nature of the physical, and micro-phenomenal properties are causally efficacious. But unified macro-experience strongly emerges from micro-configurations via fundamental bridging laws, as a further fact. The question of whether this emergent macro-phenomenal character has additional causal powers — beyond those already exercised by the micro-phenomenal — remains open.", color: "#5B4A00" };
-  else if (answers.russellian === "russellian" && answers.constitutive === "non_constitutive" && answers.nonconst_type === "top_down") base = { id: "type-f-topdown", name: "Type-F Monism — Priority Monism", aka: "Cosmopsychism, priority cosmopsychism, holistic panpsychism", desc: "Consciousness is the intrinsic nature of the physical, and the fundamental conscious subject is the cosmos as a whole. Individual consciousnesses are derived by decomposition, not composition. The combination problem is replaced by a decomposition problem.", color: "#5B4A00" };
-  else if (answers.russellian === "russellian" && answers.constitutive === "non_constitutive") base = { id: "type-f-nonconst", name: "Type-F Monism — Non-constitutive", aka: "Non-constitutive Russellian monism", desc: "Consciousness is the intrinsic nature of the physical, but macroexperience is not grounded in microexperience.", color: "#5B4A00" };
-  else if (answers.russellian === "russellian") base = { id: "type-f-russ", name: "Type-F Monism", aka: "Russellian monism, Russellian panpsychism, panprotopsychism, neutral monism", desc: "Consciousness is the intrinsic nature of physical reality. The structural facts constrain but do not logically fix the phenomenal character — this underdetermination is what makes the position genuinely distinct from physicalism. The combination problem is the central open question. Note: this underdetermination entails that the specific qualitative character of experience is causally inert — it is not the painfulness of pain that causes pain-behavior, but the structural-dispositional profile, which is invariant across quiddistic swaps.", color: "#5B4A00" };
+  if (noGap) base = { id: "type-a", name: "Type-A Materialism", aka: "Eliminativism, illusionism, analytic functionalism, logical behaviorism, deflationism", desc: "The physical facts logically necessitate the phenomenal facts, and this necessitation is knowable a priori — the phenomenal facts are deducible from a complete physical description. There is no epistemic gap. The hard problem dissolves into the easy problems.", color: "#5C3D1E" };
+  else if (answers.mary === "gap" && answers.zombies === "no_gap") base = { id: "type-b", name: "Type-B Materialism", aka: "A posteriori physicalism, the phenomenal concept strategy, psychophysical identity theory", desc: "The physical facts logically necessitate the phenomenal facts — a physical duplicate necessarily has the same consciousness (zombies are incoherent). But this necessitation is not knowable a priori: Mary learns something new upon seeing red. The phenomenal facts cannot be deduced from the physical description. Consciousness is identical to a physical property; the identity is a posteriori necessary, like water = H₂O.", color: "#1B4D8A" };
+  else if (hasGap && answers.ontological === "no_ont_gap") base = { id: "type-b", name: "Type-B Materialism", aka: "A posteriori physicalism, the phenomenal concept strategy, psychophysical identity theory", desc: "The physical facts logically necessitate the phenomenal facts, but this necessitation is not knowable a priori — the phenomenal facts cannot be deduced from the physical description. Consciousness is identical to a physical property; the identity is a posteriori necessary. The permanent epistemic gap (failure of deducibility) arises from the unique cognitive character of phenomenal concepts, not from a failure of necessitation.", color: "#1B4D8A" };
+  else if (answers.ontological === "ont_gap" && answers.closure === "open") base = { id: "type-d", name: "Type-D Dualism (Interactionism)", aka: "Substance dualism, property dualism with downward causation, emergentist interactionism", desc: "The physical facts do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the structural-relational description and causally affects the physical world. The causal structure of physics is not self-contained — consciousness plays an irreducible causal role.", color: "#8B2252" };
+  else if (answers.ontological === "ont_gap" && answers.closure === "closed" && answers.causation === "inert" && answers.russellian !== "russellian") base = { id: "type-e", name: "Type-E Dualism (Epiphenomenalism)", aka: "Property epiphenomenalism, parallelist dualism", desc: "The physical facts do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the structural-relational description and is causally inert. Physical states cause conscious states, but conscious states cause nothing. This follows from the conjunction of the failure of necessitation and causal closure.", color: "#6B3FA0" };
+  else if (answers.ontological === "ont_gap" && answers.closure === "closed" && answers.causation === "overdetermination") base = { id: "type-o", name: "Type-O Dualism (Overdetermination)", aka: "Causal overdetermination, dual-causation dualism", desc: "The physical facts do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the structural-relational description but is causally efficacious via systematic overdetermination. Every physical effect of consciousness also has a sufficient physical cause.", color: "#8A6E24" };
+  else if (answers.russellian === "russellian" && answers.constitutive === "constitutive" && answers.grounding_type === "transparent") base = { id: "type-f-const-a", name: "Type-F Monism — Constitutive (Transparent)", aka: "Constitutive Russellian panpsychism (type-A), constitutive panprotopsychism, neutral monism", desc: "Consciousness is the intrinsic nature of the physical. Macroexperience is grounded in microexperience, and this grounding is in principle transparent — macro-phenomenal facts are deducible from micro-phenomenal and structural facts. The combination problem is a research challenge, not a principled barrier.", color: "#2D6B4F" };
+  else if (answers.russellian === "russellian" && answers.constitutive === "constitutive" && answers.grounding_type === "opaque") base = { id: "type-f-const-b", name: "Type-F Monism — Constitutive (Opaque)", aka: "Constitutive Russellian panpsychism (type-B), brute-grounding panpsychism", desc: "Consciousness is the intrinsic nature of the physical. Macroexperience is grounded in microexperience, but the grounding is a posteriori necessary — not deducible even in principle from the micro-level facts. The hard problem has been relocated from the physical-phenomenal gap to the micro-macro phenomenal gap.", color: "#2D6B4F" };
+  else if (answers.russellian === "russellian" && answers.constitutive === "constitutive") base = { id: "type-f-const", name: "Type-F Monism — Constitutive", aka: "Constitutive Russellian panpsychism, panprotopsychism, neutral monism", desc: "Consciousness is the intrinsic nature of the physical, and macroexperience is grounded in microexperience. The combination problem is the central open question.", color: "#2D6B4F" };
+  else if (answers.russellian === "russellian" && answers.constitutive === "non_constitutive" && answers.nonconst_type === "emergent") base = { id: "type-f-emerg", name: "Type-F Monism — Non-constitutive Emergent", aka: "Emergent Russellian panpsychism, emergent panprotopsychism", desc: "Consciousness is the intrinsic nature of the physical, and micro-phenomenal properties are causally efficacious. But unified macro-experience strongly emerges from micro-configurations via fundamental bridging laws, as a further fact. The question of whether this emergent macro-phenomenal character has additional causal powers — beyond those already exercised by the micro-phenomenal — remains open.", color: "#2D6B4F" };
+  else if (answers.russellian === "russellian" && answers.constitutive === "non_constitutive" && answers.nonconst_type === "top_down") base = { id: "type-f-topdown", name: "Type-F Monism — Priority Monism", aka: "Cosmopsychism, priority cosmopsychism, holistic panpsychism", desc: "Consciousness is the intrinsic nature of the physical, and the fundamental conscious subject is the cosmos as a whole. Individual consciousnesses are derived by decomposition, not composition. The combination problem is replaced by a decomposition problem.", color: "#2D6B4F" };
+  else if (answers.russellian === "russellian" && answers.constitutive === "non_constitutive") base = { id: "type-f-nonconst", name: "Type-F Monism — Non-constitutive", aka: "Non-constitutive Russellian monism", desc: "Consciousness is the intrinsic nature of the physical, but macroexperience is not grounded in microexperience.", color: "#2D6B4F" };
+  else if (answers.russellian === "russellian") base = { id: "type-f-russ", name: "Type-F Monism", aka: "Russellian monism, Russellian panpsychism, panprotopsychism, neutral monism", desc: "Consciousness is the intrinsic nature of physical reality. The structural facts constrain but do not logically fix the phenomenal character — this underdetermination is what makes the position genuinely distinct from physicalism. The combination problem is the central open question. Note: this underdetermination entails that the specific qualitative character of experience is causally inert — it is not the painfulness of pain that causes pain-behavior, but the structural-dispositional profile, which is invariant across quiddistic swaps.", color: "#2D6B4F" };
   else base = { id: "undetermined", name: "Position Unclear", desc: "Your answers do not map to a single position in the taxonomy — the decision tree has boundary regions where positions blur.", color: "#888" };
 
   // Append functionalism qualifier
@@ -675,23 +698,23 @@ function getPosition(answers) {
 
 const TREE_NODES = [
   { id: "epistemic", label: "Epistemic gap?", depth: 0, parent: null },
-  { id: "type-a", label: "Type A", depth: 1, parent: "epistemic", terminal: true, color: "#4A3728" },
+  { id: "type-a", label: "Type A", depth: 1, parent: "epistemic", terminal: true, color: "#5C3D1E" },
   { id: "ontological", label: "Ontological gap?", depth: 1, parent: "epistemic" },
-  { id: "type-b", label: "Type B", depth: 2, parent: "ontological", terminal: true, color: "#1B3A6B" },
+  { id: "type-b", label: "Type B", depth: 2, parent: "ontological", terminal: true, color: "#1B4D8A" },
   { id: "closure", label: "Causal closure?", depth: 2, parent: "ontological" },
-  { id: "type-d", label: "Type D", depth: 3, parent: "closure", terminal: true, color: "#6B2D48" },
+  { id: "type-d", label: "Type D", depth: 3, parent: "closure", terminal: true, color: "#8B2252" },
   { id: "russellian", label: "Intrinsic nature?", depth: 3, parent: "closure" },
   { id: "causation", label: "Mental causation?", depth: 4, parent: "russellian" },
-  { id: "type-e", label: "Type E", depth: 5, parent: "causation", terminal: true, color: "#4A3B6B" },
-  { id: "type-o", label: "Type O", depth: 5, parent: "causation", terminal: true, color: "#6B5B2D" },
+  { id: "type-e", label: "Type E", depth: 5, parent: "causation", terminal: true, color: "#6B3FA0" },
+  { id: "type-o", label: "Type O", depth: 5, parent: "causation", terminal: true, color: "#8A6E24" },
   { id: "underdetermination", label: "Structure fixes intrinsics?", depth: 4, parent: "russellian" },
   { id: "struct-reroute", label: "→ reconcile (reroute)", depth: 5, parent: "underdetermination", terminal: true, color: "#3A3A3A" },
   { id: "constitutive", label: "Constitutive?", depth: 5, parent: "underdetermination" },
   { id: "grounding", label: "Grounding transparent?", depth: 6, parent: "constitutive" },
-  { id: "type-f-a", label: "Type F (transparent)", depth: 7, parent: "grounding", terminal: true, color: "#5B4A00" },
+  { id: "type-f-a", label: "Type F (transparent)", depth: 7, parent: "grounding", terminal: true, color: "#2D6B4F" },
   { id: "type-f-b", label: "Type F (opaque)", depth: 7, parent: "grounding", terminal: true, color: "#6B5A10" },
   { id: "nonconst", label: "Emergence or priority?", depth: 6, parent: "constitutive" },
-  { id: "type-f-emerg", label: "Type F (emergent)", depth: 7, parent: "nonconst", terminal: true, color: "#5B4A00" },
+  { id: "type-f-emerg", label: "Type F (emergent)", depth: 7, parent: "nonconst", terminal: true, color: "#2D6B4F" },
   { id: "type-f-top", label: "Type F (priority)", depth: 7, parent: "nonconst", terminal: true, color: "#4A5B3A" },
   { id: "func-sep", label: "───", depth: 0, parent: null, separator: true },
   { id: "functionalism", label: "Functionalism?", depth: 0, parent: null },
@@ -811,7 +834,7 @@ function DeepDive({ item }) {
           <div style={{
             fontFamily: "'Source Serif 4', serif", fontSize: 13, lineHeight: 1.75,
             color: "#3d3833", whiteSpace: "pre-line", marginBottom: 10
-          }}>{item.content}</div>
+          }}>{renderMd(item.content)}</div>
           <div style={{
             fontFamily: "'Source Serif 4', serif", fontSize: 11, color: "#8A7E72",
             fontStyle: "italic", lineHeight: 1.45, borderLeft: "2px solid #EDEAE6", paddingLeft: 10
@@ -867,7 +890,7 @@ function StepPage({ step, answer, onAnswer, onNext, onBack, stepIndex, totalStep
           <div style={{
             fontFamily: "'Source Serif 4', serif", fontSize: 17, lineHeight: 1.85,
             color: "#3d3833", marginBottom: 36, whiteSpace: "pre-line"
-          }}>{step.setup}</div>
+          }}>{renderMd(step.setup)}</div>
 
           <div style={{ width: 40, height: 2, background: "#D4C9BC", marginBottom: 28 }} />
 
@@ -894,29 +917,15 @@ function StepPage({ step, answer, onAnswer, onNext, onBack, stepIndex, totalStep
                   <div style={{
                     fontFamily: "'Cormorant Garamond', serif", fontSize: 19, fontWeight: 700,
                     marginBottom: 4, lineHeight: 1.3
-                  }}>{opt.label}</div>
+                  }}>{renderMd(opt.label)}</div>
                   <div style={{
                     fontFamily: "'Source Serif 4', serif", fontSize: 13.5, lineHeight: 1.55,
                     color: isSel ? "rgba(255,255,255,0.8)" : "#8A7E72"
-                  }}>{opt.desc}</div>
+                  }}>{renderMd(opt.desc)}</div>
                 </button>
               );
             })}
           </div>
-
-          {/* Contextual note for divergent Mary/Zombies answers */}
-          {step.id === "zombies" && selected && answers.mary && selected !== answers.mary && (
-            <div style={{
-              fontFamily: "'Source Serif 4', serif", fontSize: 13, color: "#6B6460",
-              fontStyle: "italic", lineHeight: 1.6, marginBottom: 20,
-              padding: "12px 16px", background: "#F5F3F0", borderRadius: 4, borderLeft: "3px solid #D4C9BC"
-            }}>
-              {selected === "no_gap" && answers.mary === "gap"
-                ? "You hold that Mary learns a new fact but that zombies are not conceivable. This is a coherent combination: the physical facts logically necessitate the phenomenal facts (no zombies), but this necessitation is not knowable a priori (Mary learns something new). This is the type-B physicalist position."
-                : "You hold that zombies are conceivable but that Mary learns no new fact. This combination is in tension: if the phenomenal facts are deducible from the physical description, it is hard to see how a structural duplicate could lack consciousness."
-              }
-            </div>
-          )}
 
           <div style={{ display: "flex", gap: 12 }}>
             {stepIndex > 0 && (
@@ -1015,7 +1024,7 @@ function ResultPage({ answers, onRestart }) {
       <p style={{
         fontFamily: "'Source Serif 4', serif", fontSize: 17, lineHeight: 1.85,
         color: "#3d3833", maxWidth: 520, textAlign: "center", margin: "20px 0 48px"
-      }}>{pos.desc}</p>
+      }}>{renderMd(pos.desc)}</p>
 
       <div className="result-cols" style={{ display: "flex", gap: 60, alignItems: "flex-start", maxWidth: 800, width: "100%" }}>
         <div style={{ width: 240, flexShrink: 0 }}>
@@ -1126,7 +1135,7 @@ function IntroPage({ onStart }) {
 
       <div style={{
         width: 60, height: 2, margin: "28px 0",
-        background: "linear-gradient(90deg, #5B3A29, #1B3A6B, #5B4A00)",
+        background: "linear-gradient(90deg, #5B3A29, #1B4D8A, #2D6B4F)",
         borderRadius: 1, position: "relative"
       }} />
 

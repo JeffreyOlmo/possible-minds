@@ -5,7 +5,7 @@ const POSITIONS = [
     id: "type-a",
     name: "Type-A Materialism",
     subtitle: "Dennett · Frankish · Lewis · Ryle · Armstrong",
-    color: "#4A3728",
+    color: "#5C3D1E",
     answers: [0, 1, 1, 1, 0.5, 0, 0],
     systemsAnswers: [0.5, 1, 0, 1, 0, 0.5],
     summary: "No epistemic gap exists between physical and phenomenal truths. Explaining functional and behavioral capacities explains everything. Zombies are incoherent; Mary learns no new propositional fact. Includes eliminativism (which denies phenomenal consciousness exists) and analytic functionalism (which accepts it but identifies it with functional organization). Chalmers classifies any view that denies a residual explanatory gap as Type-A.",
@@ -77,7 +77,7 @@ const POSITIONS = [
     id: "type-b",
     name: "Type-B Materialism",
     subtitle: "Papineau · Loar · Tye · Block · Stalnaker",
-    color: "#1B3A6B",
+    color: "#1B4D8A",
     answers: [1, 1, 1, 1, 1, 0, 0],
     systemsAnswers: [0.5, 1, 0, 1, 0, 0.5],
     summary: "There is a genuine, permanent epistemic gap — zombies are conceivable and Mary learns something — but no ontological gap. Consciousness is identical to or necessitated by a physical property via a posteriori necessity. Chalmers identifies three defensive strategies: denying identities need explanation (Papineau), denying the disanalogy with standard a posteriori identities (Block & Stalnaker), and the phenomenal concept strategy (Loar). He argues all require 'strong necessities' unlike any other.",
@@ -143,7 +143,7 @@ const POSITIONS = [
     id: "type-d",
     name: "Type-D Dualism",
     subtitle: "Descartes · Eccles · Stapp · Broad · Lowe",
-    color: "#6B2D48",
+    color: "#8B2252",
     answers: [1, 0, 0, 1, 1, 0, 0],
     systemsAnswers: [0, 0.5, 0, 0.5, 0, 0],
     summary: "Interactionism: phenomenal properties are ontologically distinct from physical properties and causally affect the physical world. Microphysics is not causally closed. Chalmers notes this is more empirically defensible than commonly acknowledged: quantum mechanics is compatible with consciousness-based collapse. The defining advantage over Type-E: consciousness is causally efficacious.",
@@ -214,7 +214,7 @@ const POSITIONS = [
     id: "type-e",
     name: "Type-E Dualism",
     subtitle: "Huxley · Jackson (early) · Campbell · Robinson",
-    color: "#4A3B6B",
+    color: "#6B3FA0",
     answers: [1, 0, 1, 0, 1, 0, 0],
     systemsAnswers: [0, 0.5, 0, 0.5, 0, 0],
     summary: "Epiphenomenalism: phenomenal properties are ontologically distinct, the physical world is causally closed, and consciousness has no causal effect. Physical states cause phenomenal states; phenomenal states cause nothing. Chalmers identifies this as the forced consequence of accepting both zombies and causal closure.",
@@ -279,7 +279,7 @@ const POSITIONS = [
     id: "type-o",
     name: "Type-O Dualism",
     subtitle: "Bealer · Lowe · Mills",
-    color: "#6B5B2D",
+    color: "#8A6E24",
     answers: [1, 0, 1, 1, 1, 0, 0],
     systemsAnswers: null,
     summary: "Phenomenal properties are non-physical, microphysics is causally closed, yet consciousness is causally efficacious via systematic overdetermination. Every physical effect caused by consciousness also has a sufficient physical cause. Chalmers identifies this as a logically distinct position that most discussions overlook. 'O for overdetermination.'",
@@ -337,7 +337,7 @@ const POSITIONS = [
     id: "type-f",
     name: "Type-F Monism",
     subtitle: "Russell · Strawson · Chalmers · Goff · Feigl",
-    color: "#5B4A00",
+    color: "#2D6B4F",
     answers: [1, 0.5, 1, 1, 1, 1, 0.5],
     systemsAnswers: [0.5, 1, 0.75, 0.5, 0.75, 0.5],
     summary: "Russellian Monism / Panpsychism / Panprotopsychism: consciousness is the intrinsic nature of physical reality. Physics describes the world entirely in structural-relational terms — what things do, not what they are. What fills in the structure is phenomenal or protophenomenal. Crucially, the structural facts underdetermine the intrinsic natures: structure constrains the quiddities but does not logically fix which specific phenomenal character fills the structural roles. This underdetermination is what makes the position distinct from physicalism (if structure fixed the intrinsics, the position would collapse into Type-A or Type-B). But it has a causal cost: since the structural description is causally complete and qualitative character is underdetermined by structure, the specific character of experience is causally inert. The central challenges are the combination problem and the tension with functionalism (which is incompatible with substrate-dependent quiddities).",
@@ -1646,17 +1646,17 @@ export default function MachineConsciousness() {
                   {
                     title: "The Materialists (A, B)",
                     desc: "Type-A closes the epistemic gap entirely — consciousness just IS function. Type-B concedes a real epistemic gap but denies any ontological gap — consciousness is physical, the identity is a posteriori.",
-                    border: "#4A3728"
+                    border: "#5C3D1E"
                   },
                   {
                     title: "The Dualists (D, E, O)",
                     desc: "Type-D (interactionism), Type-E (epiphenomenalism), and Type-O (overdetermination) all accept that consciousness is non-physical. They split on causal closure and mental causation: D denies closure — consciousness causally intervenes. E accepts closure — consciousness is causally inert. O accepts closure but preserves causation via overdetermination. Chalmers frames E as the forced consequence of accepting both zombies and closure.",
-                    border: "#6B2D48"
+                    border: "#8B2252"
                   },
                   {
                     title: "The Monism (F)",
                     desc: "Type-F (Russellian monism) fills the Russellian gap with phenomenal or protophenomenal intrinsic properties — preserving closure while respecting the explanatory gap. Its internal taxonomy is the richest: constitutive vs. non-constitutive, Russellian vs. non-Russellian, panpsychism vs. panprotopsychism. Chalmers considers Type-F the most promising option; the combination problem is its central challenge.",
-                    border: "#5B4A00"
+                    border: "#2D6B4F"
                   }
                 ].map((c, i) => (
                   <div key={i} style={{

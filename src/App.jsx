@@ -10,7 +10,7 @@ const POSITIONS = [
   {
     id: "type-a", name: "Type-A Materialism",
     aka: ["Eliminativism", "Illusionism", "Analytic Functionalism", "Logical Behaviorism", "Deflationism"],
-    color: "#4A3728",
+    color: "#5C3D1E",
     commitments: ["Physical facts necessitate phenomenal facts", "Necessitation knowable a priori", "Phenomenal facts deducible from physical description", "Causal closure"],
     summary: "The physical facts — the structural-relational properties of the world as described by physical law — logically necessitate the phenomenal facts, and this necessitation is knowable a priori. The phenomenal facts are deducible from a complete physical description. There is no epistemic gap. The hard problem dissolves into the easy problems — whether because phenomenal consciousness as naively conceived does not exist (eliminativism/illusionism), or because it is analytically identical to functional organization (analytic functionalism).",
     tensions: [
@@ -29,7 +29,7 @@ const POSITIONS = [
   {
     id: "type-b", name: "Type-B Materialism",
     aka: ["A Posteriori Physicalism", "Phenomenal Concept Strategy", "Psychophysical Identity Theory"],
-    color: "#1B3A6B",
+    color: "#1B4D8A",
     commitments: ["Physical facts necessitate phenomenal facts", "Necessitation not knowable a priori", "Phenomenal facts not deducible from physical description", "Causal closure"],
     summary: "The physical facts (structural-relational properties as described by physical law) logically necessitate the phenomenal facts, but this necessitation is not knowable a priori — the phenomenal facts cannot be deduced from the physical description. Mary learns something new upon seeing red, yet there is no possible world with the same physical facts but different phenomenal facts. Consciousness is identical to a physical property; the identity is a posteriori necessary, like water = H₂O. The permanent epistemic gap (failure of deducibility) arises from the unique cognitive character of phenomenal concepts, not from a failure of necessitation.",
     tensions: [
@@ -47,7 +47,7 @@ const POSITIONS = [
   {
     id: "type-d", name: "Type-D Dualism",
     aka: ["Interactionism", "Substance Dualism", "Property Dualism with Downward Causation"],
-    color: "#6B2D48",
+    color: "#8B2252",
     commitments: ["Physical facts do not necessitate phenomenal facts", "Causal closure fails", "Mental causation (via interaction)"],
     summary: "The physical facts (structural-relational) do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the physical description and causally affects the physical world. The causal structure of physics is not self-contained — consciousness plays an irreducible causal role. This requires revising the scope of physical law, though the quantum measurement problem may already demand this.",
     tensions: [
@@ -66,7 +66,7 @@ const POSITIONS = [
   {
     id: "type-e", name: "Type-E Dualism",
     aka: ["Epiphenomenalism", "Property Epiphenomenalism", "Parallelist Dualism"],
-    color: "#4A3B6B",
+    color: "#6B3FA0",
     commitments: ["Physical facts do not necessitate phenomenal facts", "Causal closure holds", "No mental causation"],
     summary: "The physical facts do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the structural-relational description and is causally inert. Physical states cause conscious states, but conscious states cause nothing. This follows from the conjunction of the failure of necessitation (consciousness is not physical) and causal closure (every physical event has a sufficient physical cause). Your experience of deciding to act plays no role in the action.",
     tensions: [
@@ -84,7 +84,7 @@ const POSITIONS = [
   {
     id: "type-o", name: "Type-O Dualism",
     aka: ["Causal Overdetermination", "Dual-Causation Dualism"],
-    color: "#6B5B2D",
+    color: "#8A6E24",
     commitments: ["Physical facts do not necessitate phenomenal facts", "Causal closure holds", "Mental causation (via overdetermination)"],
     summary: "The physical facts do not logically necessitate the phenomenal facts. Consciousness is not necessitated by the structural-relational description but is causally efficacious. Every physical effect of consciousness also has a sufficient physical cause — every conscious action is caused twice over, once by physics and once by consciousness. Causal closure is preserved because the physical cause is always sufficient on its own.",
     tensions: [
@@ -101,7 +101,7 @@ const POSITIONS = [
   {
     id: "type-f", name: "Type-F Monism",
     aka: ["Russellian Monism", "Panpsychism", "Panprotopsychism", "Neutral Monism"],
-    color: "#5B4A00",
+    color: "#2D6B4F",
     commitments: ["Structural facts do not necessitate phenomenal facts", "Structure underdetermines intrinsic natures", "Causal closure holds", "Qualitative character causally inert"],
     summary: "Consciousness is the intrinsic nature of physical reality. Physics describes the world entirely in structural-relational terms — what things do, not what they are. What fills in the structure from the inside is phenomenal or protophenomenal. Crucially, the structural facts underdetermine the intrinsic natures: the relational web constrains the quiddities but does not logically fix which specific phenomenal character fills the structural roles. This underdetermination is what makes the position genuinely distinct from physicalism — if structure fixed the intrinsics, the distinction would collapse. But this underdetermination has a causal cost: since the structural description is causally complete, and qualitative character is underdetermined by structure, the specific character of experience makes no difference to any causal outcome. It is not the painfulness of pain that causes you to say 'that hurts' — it is the structural-dispositional profile, invariant across quiddistic swaps.",
     tensions: [
@@ -141,8 +141,39 @@ const ESSAYS = [
 // ─────────────────────────────────────────────
 
 function PositionDetail({ position, onBack }) {
+  // Parse hex color to rgba for gradient orbs
+  const c = position.color;
+  const r = parseInt(c.slice(1,3), 16), g = parseInt(c.slice(3,5), 16), b = parseInt(c.slice(5,7), 16);
+
   return (
-    <div style={{ maxWidth: 700, margin: "0 auto", padding: "80px 24px 80px" }}>
+    <div style={{ position: "relative", overflow: "hidden" }}>
+      <style>{`
+        @keyframes orbDrift1 {
+          0%   { transform: translate(0, 0) scale(1); }
+          33%  { transform: translate(8%, 12%) scale(1.05); }
+          66%  { transform: translate(-5%, 6%) scale(0.95); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes orbDrift2 {
+          0%   { transform: translate(0, 0) scale(1); }
+          33%  { transform: translate(-10%, -8%) scale(1.08); }
+          66%  { transform: translate(6%, -4%) scale(0.97); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+      `}</style>
+      <div style={{
+        position: "absolute", top: "-10%", right: "-5%", width: "55%", height: "55%",
+        background: `radial-gradient(ellipse at center, rgba(${r},${g},${b},0.10) 0%, rgba(${r},${g},${b},0.03) 40%, transparent 70%)`,
+        pointerEvents: "none", filter: "blur(40px)",
+        animation: "orbDrift1 20s ease-in-out infinite"
+      }} />
+      <div style={{
+        position: "absolute", bottom: "5%", left: "-5%", width: "50%", height: "50%",
+        background: `radial-gradient(ellipse at center, rgba(${r},${g},${b},0.07) 0%, rgba(${r},${g},${b},0.02) 40%, transparent 70%)`,
+        pointerEvents: "none", filter: "blur(40px)",
+        animation: "orbDrift2 25s ease-in-out infinite"
+      }} />
+      <div style={{ maxWidth: 700, margin: "0 auto", padding: "80px 24px 80px", position: "relative" }}>
       <button onClick={onBack} style={{
         background: "none", border: "none", cursor: "pointer", padding: 0, marginBottom: 32,
         fontFamily: "'Source Serif 4', serif", fontSize: 14, color: "#8A7E72"
@@ -239,6 +270,7 @@ function PositionDetail({ position, onBack }) {
           lineHeight: 1.5, padding: "6px 0 6px 14px", borderLeft: `2px solid ${position.color}22`
         }}>{t}</div>
       ))}
+      </div>
     </div>
   );
 }
