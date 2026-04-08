@@ -6,7 +6,7 @@ const POSITIONS = [
     name: "Type-A Materialism",
     subtitle: "Dennett · Frankish · Lewis · Ryle · Armstrong",
     color: "#4A3728",
-    answers: [0, 0, 1, 1, 0.5, 0, 0],
+    answers: [0, 1, 1, 1, 0.5, 0, 0],
     systemsAnswers: [0.5, 1, 0, 1, 0, 0.5],
     summary: "No epistemic gap exists between physical and phenomenal truths. Explaining functional and behavioral capacities explains everything. Zombies are incoherent; Mary learns no new propositional fact. Includes eliminativism (which denies phenomenal consciousness exists) and analytic functionalism (which accepts it but identifies it with functional organization). Chalmers classifies any view that denies a residual explanatory gap as Type-A.",
     cluster: [
@@ -31,10 +31,7 @@ const POSITIONS = [
         note: "Consciousness is global broadcast. As Type-A, this takes broadcast to exhaust what needs explaining."
       }
     ],
-    children: [
-      { id: "type-a-elim", name: "Eliminativism / Illusionism", subtitle: "Dennett · Frankish · Churchland", answers: [0, 0, 1, 1, 0, 0, 0], note: "Phenomenal consciousness as naively conceived does not exist. The hard problem is malformed or an illusion." },
-      { id: "type-a-func", name: "Analytic Functionalism", subtitle: "Lewis · Armstrong · Ryle", answers: [0, 0, 1, 1, 1, 0, 0], note: "Phenomenal consciousness exists but is analytically identical to functional organization." }
-    ],
+    children: [],
     sources: [
       "Dennett, D. (1991). Consciousness Explained. Little, Brown.",
       "Frankish, K. (2016). 'Illusionism as a Theory of Consciousness.' Journal of Consciousness Studies 23.",
@@ -81,7 +78,7 @@ const POSITIONS = [
     name: "Type-B Materialism",
     subtitle: "Papineau · Loar · Tye · Block · Stalnaker",
     color: "#1B3A6B",
-    answers: [1, 0, 1, 1, 1, 0, 0],
+    answers: [1, 1, 1, 1, 1, 0, 0],
     systemsAnswers: [0.5, 1, 0, 1, 0, 0.5],
     summary: "There is a genuine, permanent epistemic gap — zombies are conceivable and Mary learns something — but no ontological gap. Consciousness is identical to or necessitated by a physical property via a posteriori necessity. Chalmers identifies three defensive strategies: denying identities need explanation (Papineau), denying the disanalogy with standard a posteriori identities (Block & Stalnaker), and the phenomenal concept strategy (Loar). He argues all require 'strong necessities' unlike any other.",
     cluster: [
@@ -143,81 +140,11 @@ const POSITIONS = [
     ]
   },
   {
-    id: "type-c",
-    name: "Type-C Materialism",
-    subtitle: "Nagel · McGinn · van Gulick",
-    color: "#5A6B3B",
-    answers: [1, 0, 1, 1, 1, 0, 0],
-    systemsAnswers: [0.5, 1, 0, 1, 0, 0.5],
-    unstable: true,
-    summary: "There is a deep epistemic gap, but it is closable in principle through conceptual revolution, scientific progress, or expanded physics. Chalmers argues this position is unstable: it must collapse into Type-A (if future concepts are functional), Type-B (if the bridge is brute necessity), or Type-F (if new physics goes beyond structure and dynamics). Many working scientists implicitly hold something like Type-C.",
-    cluster: [
-      {
-        name: "Conceptual Revolution",
-        authors: "Nagel",
-        note: "Just as pre-Socratics could not understand matter as energy, we cannot yet understand consciousness as physical. Chalmers argues Nagel is ultimately Type-B or Type-F."
-      },
-      {
-        name: "Psychological Limitation",
-        authors: "Churchland",
-        note: "Our inability to imagine how consciousness could be physical is a psychological limitation science will overcome."
-      },
-      {
-        name: "Conceivability Questioned",
-        authors: "van Gulick",
-        note: "Conceivability arguments are question-begging; good explanation will make zombies inconceivable."
-      },
-      {
-        name: "Cognitive Closure",
-        authors: "McGinn",
-        note: "The problem is humanly unsolvable due to cognitive limitations, but a solution exists. Chalmers argues McGinn is ultimately a Type-F monist."
-      }
-    ],
-    children: [],
-    sources: [
-      "Nagel, T. (1974). 'What Is It Like to Be a Bat?' Philosophical Review 83.",
-      "McGinn, C. (1989). 'Can We Solve the Mind-Body Problem?' Mind 98.",
-      "Van Gulick, R. (1993). 'Understanding the Phenomenal Mind.'",
-      "Chalmers, D. (2003). 'Consciousness and its Place in Nature.' Blackwell Guide to Philosophy of Mind."
-    ],
-    explanations: [
-      {
-        text: "Yes — there is a genuine current epistemic gap, but it is closable. Future conceptual developments will dissolve it.",
-        cite: "Nagel (1974); McGinn (1989).",
-        note: "Chalmers' instability argument: any bridge concept either (a) is functional → collapses to A, (b) goes beyond structure → collapses to F, or (c) is brute → collapses to B."
-      },
-      {
-        text: "No — materialism is true. The gap reflects current limitations, not a gap in nature.",
-        cite: "Nagel (1974); Churchland (1996)."
-      },
-      {
-        text: "Yes — causal closure accepted.",
-        cite: "McGinn (1989)."
-      },
-      {
-        text: "Yes — consciousness is physical and causally efficacious.",
-        cite: "Nagel (1974)."
-      },
-      {
-        text: "Yes — phenomenal consciousness is real. Type-C takes the hard problem seriously but expects it to be solved.",
-        cite: "Nagel (1974); McGinn (1989)."
-      },
-      {
-        text: "Ambiguous. If future physics goes beyond structure and dynamics, it may invoke Russellian intrinsic properties — which would be Type-F. This is the core of Chalmers' instability argument.",
-        cite: "Chalmers (2003)."
-      },
-      {
-        text: "No — no microphenomenal facts in the Type-C picture.",
-        cite: "Chalmers (2003)."
-      }
-    ]
-  },
-  {
     id: "type-d",
     name: "Type-D Dualism",
     subtitle: "Descartes · Eccles · Stapp · Broad · Lowe",
     color: "#6B2D48",
-    answers: [1, 1, 0, 1, 1, 0, 0],
+    answers: [1, 0, 0, 1, 1, 0, 0],
     systemsAnswers: [0, 0.5, 0, 0.5, 0, 0],
     summary: "Interactionism: phenomenal properties are ontologically distinct from physical properties and causally affect the physical world. Microphysics is not causally closed. Chalmers notes this is more empirically defensible than commonly acknowledged: quantum mechanics is compatible with consciousness-based collapse. The defining advantage over Type-E: consciousness is causally efficacious.",
     cluster: [
@@ -242,12 +169,7 @@ const POSITIONS = [
         note: "Consciousness causes wavefunction collapse. The standard QM formalism, taken at face value, makes room for exactly this role."
       }
     ],
-    children: [
-      { id: "type-d-sub", name: "Substance Dualism", subtitle: "Descartes · Swinburne", answers: [1, 1, 0, 1, 1, 0, 0], note: "Mind and body are distinct substances. The soul is non-spatial, non-physical." },
-      { id: "type-d-prop", name: "Property Interactionism", subtitle: "Eccles · Popper · Sellars", answers: [1, 1, 0, 1, 1, 0, 0], note: "One substance, two property types — phenomenal properties exert genuine causal influence on the physical." },
-      { id: "type-d-emerg", name: "Emergentist Interactionism", subtitle: "Broad · Lowe", answers: [1, 1, 0, 1, 1, 0, 0], note: "Phenomenal properties are novel emergent properties with novel downward causal effects — Broad's 'trans-ordinal laws.'" },
-      { id: "type-d-qm", name: "Quantum Mind", subtitle: "Stapp · Wigner", answers: [1, 1, 0, 1, 1, 0, 0], note: "Consciousness causes wavefunction collapse. The standard QM formalism makes room for exactly this role." }
-    ],
+    children: [],
     sources: [
       "Descartes, R. (1641). Meditations on First Philosophy.",
       "Popper, K. & Eccles, J. (1977). The Self and Its Brain. Springer.",
@@ -293,7 +215,7 @@ const POSITIONS = [
     name: "Type-E Dualism",
     subtitle: "Huxley · Jackson (early) · Campbell · Robinson",
     color: "#4A3B6B",
-    answers: [1, 1, 1, 0, 1, 0, 0],
+    answers: [1, 0, 1, 0, 1, 0, 0],
     systemsAnswers: [0, 0.5, 0, 0.5, 0, 0],
     summary: "Epiphenomenalism: phenomenal properties are ontologically distinct, the physical world is causally closed, and consciousness has no causal effect. Physical states cause phenomenal states; phenomenal states cause nothing. Chalmers identifies this as the forced consequence of accepting both zombies and causal closure.",
     cluster: [
@@ -358,7 +280,7 @@ const POSITIONS = [
     name: "Type-O Dualism",
     subtitle: "Bealer · Lowe · Mills",
     color: "#6B5B2D",
-    answers: [1, 1, 1, 1, 1, 0, 0],
+    answers: [1, 0, 1, 1, 1, 0, 0],
     systemsAnswers: null,
     summary: "Phenomenal properties are non-physical, microphysics is causally closed, yet consciousness is causally efficacious via systematic overdetermination. Every physical effect caused by consciousness also has a sufficient physical cause. Chalmers identifies this as a logically distinct position that most discussions overlook. 'O for overdetermination.'",
     cluster: [
@@ -418,7 +340,7 @@ const POSITIONS = [
     color: "#5B4A00",
     answers: [1, 0.5, 1, 1, 1, 1, 0.5],
     systemsAnswers: [0.5, 1, 0.75, 0.5, 0.75, 0.5],
-    summary: "Russellian Monism / Panpsychism / Panprotopsychism: consciousness is constituted by the intrinsic properties of fundamental physical entities — the categorical bases of microphysical dispositions. Physics characterizes the world only structurally; what fills the intrinsic nature is phenomenal or protophenomenal. Chalmers organizes the Type-F landscape along three independent dimensions: constitutive vs. non-constitutive, Russellian vs. non-Russellian, and panpsychism vs. panprotopsychism. The central challenge is the combination problem.",
+    summary: "Russellian Monism / Panpsychism / Panprotopsychism: consciousness is the intrinsic nature of physical reality. Physics describes the world entirely in structural-relational terms — what things do, not what they are. What fills in the structure is phenomenal or protophenomenal. Crucially, the structural facts underdetermine the intrinsic natures: structure constrains the quiddities but does not logically fix which specific phenomenal character fills the structural roles. This underdetermination is what makes the position distinct from physicalism (if structure fixed the intrinsics, the position would collapse into Type-A or Type-B). But it has a causal cost: since the structural description is causally complete and qualitative character is underdetermined by structure, the specific character of experience is causally inert. The central challenges are the combination problem and the tension with functionalism (which is incompatible with substrate-dependent quiddities).",
     cluster: [
       {
         name: "Panpsychism vs. Panprotopsychism",
@@ -451,16 +373,7 @@ const POSITIONS = [
         note: "Underlying neutral properties — neither mental nor physical — constitute both domains. A form of constitutive Russellian panprotopsychism."
       }
     ],
-    children: [
-      { id: "type-f-crp", name: "Constitutive Russellian Panpsychism", subtitle: "Strawson · Goff", answers: [1, 0.5, 1, 1, 1, 1, 1], note: "Intrinsic natures are genuinely phenomenal. Fundamental entities have experiences. The quiddities playing microphysical roles ARE phenomenal properties that ground macroexperience." },
-      { id: "type-f-crpp", name: "Constitutive Russellian Panprotopsychism", subtitle: "Chalmers", answers: [1, 0.5, 1, 1, 1, 1, 1], note: "Intrinsic natures are protophenomenal — not themselves experiential, but collectively constituting experience. Avoids attributing experience to electrons." },
-      { id: "type-f-nm", name: "Neutral Monism", subtitle: "Russell (1921) · Feigl · Maxwell", answers: [1, 0.5, 1, 1, 1, 1, 1], note: "Underlying neutral properties — neither mental nor physical — constitute both domains. A form of constitutive Russellian panprotopsychism." },
-      { id: "type-f-id", name: "Identity Panpsychism", subtitle: "Maxwell · Lockwood · Feigl", answers: [1, 0.5, 1, 1, 1, 1, 1], note: "Macrophenomenal properties ARE certain configurations of microphenomenal properties. Non-combinatorial constitutive view." },
-      { id: "type-f-comb", name: "Combinatorial Panpsychism", subtitle: "Goff · Mørch · Seager", answers: [1, 0.5, 1, 1, 1, 1, 1], note: "Macrophenomenal properties constituted by microphenomenal properties via combination principles. Faces the combination problem most directly." },
-      { id: "type-f-cnr", name: "Non-Russellian Constitutive", subtitle: "", answers: [1, 0.5, 1, 1, 1, 0, 1], note: "Microphenomenal properties constitute macroexperience but don't play microphysical causal roles. Closer to property dualism with constitutive grounding." },
-      { id: "type-f-nce", name: "Non-constitutive Emergent", subtitle: "", answers: [1, 1, 0.5, 0.5, 1, 0.5, 0], note: "Macroexperience strongly emerges via bridging laws but is not constituted by microexperience. Maps to Type-D if downward causation, Type-E if not." },
-      { id: "type-f-nca", name: "Non-constitutive Autonomous", subtitle: "Cosmopsychism · Cavendish", answers: [1, 0.5, 0.5, 0.5, 1, 0.5, 0], note: "Consciousness at each level is independent. In cosmopsychism, the universe is the fundamental subject; individual consciousness derived by decomposition." }
-    ],
+    children: [],
     sources: [
       "Russell, B. (1927). The Analysis of Matter. Kegan Paul.",
       "Feigl, H. (1958/1967). 'The Mental and the Physical.' Minnesota Studies.",
@@ -502,73 +415,13 @@ const POSITIONS = [
         note: "Three sub-problems: subject-summing (James), palette (few micro-qualities → vast richness?), structural mismatch (discrete micro → smooth macro?)."
       }
     ]
-  },
-  {
-    id: "type-i",
-    name: "Type-I Monism",
-    subtitle: "Berkeley · Bolender · Kastrup · Adams",
-    color: "#2D5B5A",
-    answers: [0.5, 0.5, 0.5, 1, 1, 0.5, 0.5],
-    systemsAnswers: null,
-    summary: "Idealism: the physical world is itself constituted by conscious states. Rather than asking how consciousness arises from the physical, Type-I holds that the physical arises from consciousness. Chalmers identifies this as 'the physical world is constituted by the conscious states of an observing agent.' Modern versions include Kastrup's analytic idealism and cosmopsychist idealism. The framework's standard questions do not neatly apply to idealism, producing ~ entries.",
-    cluster: [
-      {
-        name: "Berkeleyan Idealism",
-        authors: "Berkeley, Adams",
-        note: "Physical objects are ideas in the mind of God or dependent on perceiving minds. Esse est percipi."
-      },
-      {
-        name: "Cosmopsychist / Analytic Idealism",
-        authors: "Bolender, Kastrup",
-        note: "The universe is one conscious subject whose mental states constitute physical reality. Individual minds are 'dissociated alters' of cosmic consciousness."
-      }
-    ],
-    children: [],
-    sources: [
-      "Berkeley, G. (1710). A Treatise Concerning the Principles of Human Knowledge.",
-      "Kastrup, B. (2019). The Idea of the World. Iff Books.",
-      "Bolender, J. (2001). 'An Argument for Idealism.' Journal of Consciousness Studies 8.",
-      "Adams, R. (2007). 'Idealism Vindicated.' In van Inwagen & Zimmerman (eds.).",
-      "Chalmers, D. (2003). 'Consciousness and its Place in Nature.' Blackwell Guide to Philosophy of Mind."
-    ],
-    explanations: [
-      {
-        text: "Ambiguous. The standard epistemic gap runs from physical to phenomenal. Idealism inverts this: the physical is what needs explaining, not consciousness.",
-        cite: "Berkeley (1710); Kastrup (2019)."
-      },
-      {
-        text: "Ambiguous. Type-I is monist but not materialist. The physical and mental are not separate; the physical is a mode of the mental.",
-        cite: "Berkeley (1710); Bolender (2001)."
-      },
-      {
-        text: "Ambiguous. Since the physical is constituted by the mental, 'causal closure of the physical' is reinterpreted: physical regularities are patterns within consciousness.",
-        cite: "Berkeley (1710); Kastrup (2019)."
-      },
-      {
-        text: "Yes — consciousness is foundational and all causation is ultimately mental.",
-        cite: "Berkeley (1710); Kastrup (2019)."
-      },
-      {
-        text: "Yes — phenomenal consciousness is the fundamental reality.",
-        cite: "Berkeley (1710)."
-      },
-      {
-        text: "Ambiguous. Goes beyond the Russellian claim. Type-F fills the intrinsic nature of physics. Type-I says consciousness IS reality — the physical is an appearance within consciousness.",
-        cite: "Berkeley (1710); Kastrup (2019).",
-        note: "Type-F starts from physics and fills it with consciousness. Type-I starts from consciousness and derives physics."
-      },
-      {
-        text: "Ambiguous. If individual consciousness derives from cosmic consciousness (Kastrup), there is constitutive grounding — but from cosmic to individual, not micro to macro.",
-        cite: "Kastrup (2019); Bolender (2001)."
-      }
-    ]
   }
 ];
 
 const QUESTIONS = [
   {
     short: "Epistemic Gap",
-    full: "Is there a genuine, deep epistemic gap between complete physical/structural description and phenomenal consciousness?",
+    full: "Are the phenomenal facts deducible a priori from the complete physical (structural-relational) description?",
     subsumes: [
       {
         name: "The Explanatory Argument",
@@ -592,8 +445,8 @@ const QUESTIONS = [
     ]
   },
   {
-    short: "Ontological Gap",
-    full: "Does the epistemic gap entail an ontological gap — is standard materialism false?",
+    short: "Necessitation",
+    full: "Do the physical (structural-relational) facts logically necessitate the phenomenal facts?",
     subsumes: [
       {
         name: "Two-Dimensional Argument",
@@ -670,7 +523,7 @@ const QUESTIONS = [
   },
   {
     short: "Intrinsic Nature",
-    full: "Does consciousness constitute or arise from the intrinsic nature of the physical — does it fill the Russellian gap?",
+    full: "Is consciousness the intrinsic nature of the physical — the categorical basis underlying the structural-relational properties physics describes? (Requires that structure underdetermines the intrinsic natures.)",
     subsumes: [
       {
         name: "Russell's Observation",
@@ -687,8 +540,8 @@ const QUESTIONS = [
         scenario: "Suppose panpsychism is true and every elementary particle has a tiny experience. A brain contains 10²⁷ atoms, each with its micro-experience. When you combine them, do you get one unified experience, or 10²⁷ separate tiny ones? Physical quantities add easily — a thousand drops make a puddle. But experiences don't seem to add. A thousand separate points of view remain a thousand points of view. The panpsychist needs to explain how many become one, and nobody has a satisfying answer. Chalmers (2016) calls this 'easily the most serious problem' for type-F monism."
       },
       {
-        name: "Causal Elegance",
-        desc: "If phenomenal properties fill the intrinsic nature underlying physical causal powers, then the phenomenal IS the causally efficacious stuff — one thing, two descriptions, no exclusion problem. This is the decisive advantage of type-F over type-E: consciousness is causally efficacious without breaking causal closure."
+        name: "Causal Elegance — and Its Limits",
+        desc: "If phenomenal properties fill the intrinsic nature underlying physical causal powers, then the phenomenal IS the causally efficacious stuff — one thing, two descriptions. But this elegance is undermined by the very feature that makes Type-F distinct from physicalism: the structural facts must underdetermine the intrinsic natures. Since the structural description is causally complete, and the specific phenomenal character is underdetermined by structure, the qualitative character of experience — the painfulness of pain, the redness of red — makes no difference to any causal outcome. Consciousness is 'causally efficacious' only in the thin sense of being identical to the bearer of causal powers, not in the sense of its qualitative character doing causal work."
       },
     ]
   },
@@ -780,14 +633,6 @@ const SYSTEM_JUSTIFICATIONS = {
     "An isolated microphysical primitive almost certainly does not instantiate the right physical property for consciousness, whatever that property turns out to be. Type-B materialism does not attribute consciousness to every physical entity — only those that instantiate the relevant physical-functional property identified through empirical investigation.",
     "If the China Brain truly realizes the relevant physical-functional organization, type-B materialism says consciousness is present: the identity or necessitation holds wherever the physical property is instantiated, regardless of the substrate or distribution. Type-B is agnostic about which property that is, but if functional realization is what matters (and most type-B positions assume something like this), then the China Brain qualifies with appropriate caveats about whether nation-scale realization achieves the right organizational integration."
   ],
-  "type-c": [
-    "Similar to Type-B: whether LLMs are conscious depends on the future framework that closes the gap. Currently indeterminate.",
-    "Yes — the octopus's biological complexity makes it likely that any future framework includes it.",
-    "No — a thermometer lacks the complexity any plausible framework would require.",
-    "Likely yes — a faithful emulation preserves the relevant physical organization.",
-    "No — a microphysical primitive lacks the relevant complexity.",
-    "Indeterminate — depends entirely on what the future framework looks like."
-  ],
   "type-d": [
     "Type-D dualism holds that consciousness is non-physical and interacts with the physical via non-physical causation. An LLM is a purely physical computational system with no particular reason to have a non-physical mind attached. The view does not give any positive account of which physical systems attract non-physical minds; its implicit criteria (biological complexity, perhaps certain neural signatures) exclude current language models.",
     "Do octopuses have non-physical minds that interact with their biology? Classical substance dualists (Descartes) denied animal consciousness — animals were automata. Contemporary interactionists typically allow that behavioral sophistication and flexible learning are signs of a non-physical mind; the octopus's remarkable cognitive capacities make it a plausible candidate if any non-human animal qualifies. The ~ reflects the range of views within the tradition rather than a settled yes.",
@@ -812,8 +657,7 @@ const SYSTEM_JUSTIFICATIONS = {
     "YES*: The microphysical primitive is exactly where type-F monism locates the basic experiential furniture of the world. If the view is correct, fundamental particles have intrinsic protophenomenal properties by definition — they ARE the intrinsic nature of physical reality. But that experience (if we can call it that) is unimaginably alien and minimal — nothing resembling human phenomenology. It is the raw intrinsic nature of the physical, not anything recognizable as 'what it is like.'",
     "The China Brain's participants are themselves conscious beings, and the physical infrastructure connecting them has micro-level intrinsic properties at the substrate level. Whether a unified China Brain-level subject emerges from this combination is the combination problem in vivid form: given the spatial dispersion, slow communication speeds, and radically different physical configuration from a brain, it seems very unlikely that the combination produces a unified macro-subject. The ~ reflects that the substrate-level micro-phenomenology is guaranteed but unified macro-experience is doubtful."
   ],
-  "type-o": null,
-  "type-i": null
+  "type-o": null
 };
 
 function AnswerCell({ value, small }) {
@@ -1492,6 +1336,123 @@ function EssayStub({ title, subtitle, date, tags }) {
   );
 }
 
+// Standalone matrix section for embedding in the main app
+export function MatrixSection() {
+  const [selectedPosition, setSelectedPosition] = useState(null);
+  const [selectedCol, setSelectedCol] = useState(null);
+  const [matrixMode, setMatrixMode] = useState("arguments");
+  const detailRef = useRef(null);
+  const colRef = useRef(null);
+
+  const handleSelectPosition = useCallback((id) => {
+    setSelectedCol(null);
+    setSelectedPosition(prev => prev === id ? null : id);
+    setTimeout(() => detailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }), 50);
+  }, []);
+
+  const handleSelectColumn = useCallback((idx) => {
+    setSelectedPosition(null);
+    setSelectedCol(prev => prev === idx ? null : idx);
+    setTimeout(() => colRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }), 50);
+  }, []);
+
+  const selectedPos = POSITIONS.find(p => p.id === selectedPosition);
+  const selectedQuestion = selectedCol !== null && matrixMode === "arguments" ? QUESTIONS[selectedCol] : null;
+  const selectedSystem = selectedCol !== null && matrixMode === "systems" ? SYSTEMS[selectedCol] : null;
+
+  const handleModeChange = useCallback((newMode) => {
+    setMatrixMode(newMode);
+    setSelectedCol(null);
+    setSelectedPosition(null);
+  }, []);
+
+  return (
+    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px 80px" }}>
+      <h1 style={{
+        fontFamily: "'Cormorant Garamond', serif", fontSize: 72, fontWeight: 700,
+        color: "#1a1816", margin: "0 0 16px 0", lineHeight: 1.05, letterSpacing: "-0.02em"
+      }}>The Matrix</h1>
+      <p style={{
+        fontFamily: "'Source Serif 4', serif", fontSize: 17, lineHeight: 1.85,
+        color: "#4A4540", maxWidth: 680, margin: "0 0 32px 0"
+      }}>
+        {matrixMode === "arguments"
+          ? "Each column is a discriminating question — the decision points that separate the positions. Each row is a position's response. Click any column header to see the arguments it subsumes. Click any row to expand the position's detailed responses."
+          : "Shift the matrix from abstract commitments to concrete verdicts. Each column is a candidate system — click any system header to see how the positions divide."}
+      </p>
+      <div style={{
+        marginBottom: 32,
+        display: "inline-flex",
+        padding: 4,
+        background: "#E8E2DA",
+        border: "1px solid #D4C9BC",
+        borderRadius: 4,
+        gap: 4
+      }}>
+        {[
+          { key: "arguments", label: "Arguments" },
+          { key: "systems", label: "Systems" }
+        ].map((item) => {
+          const active = matrixMode === item.key;
+          const accent = item.key === "systems" ? "#1B6CA8" : "#5B3A29";
+          return (
+            <button
+              key={item.key}
+              onClick={() => handleModeChange(item.key)}
+              style={{
+                background: active ? "#FDFBF8" : "transparent",
+                border: active ? `1px solid ${accent}55` : "1px solid transparent",
+                color: active ? accent : "#8A7E72",
+                cursor: "pointer",
+                padding: "9px 16px",
+                borderRadius: 2,
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11,
+                fontWeight: active ? 600 : 500,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                transition: "all 0.2s"
+              }}
+            >
+              {item.label}
+            </button>
+          );
+        })}
+      </div>
+      <div style={{
+        marginBottom: 32, display: "flex", gap: 20, flexWrap: "wrap",
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11
+      }}>
+        <span><span style={{ color: "#2D6A4F", fontWeight: 700 }}>YES</span> <span style={{ color: "#8A7E72" }}>affirms</span></span>
+        {matrixMode === "systems" && <span><span style={{ color: "#4A7B9D", fontWeight: 700 }}>YES*</span> <span style={{ color: "#8A7E72" }}>affirms, with caveats</span></span>}
+        <span><span style={{ color: "#9B2226", fontWeight: 700 }}>NO</span> <span style={{ color: "#8A7E72" }}>denies</span></span>
+        <span><span style={{ color: "#B08D57", fontWeight: 700 }}>~</span> <span style={{ color: "#8A7E72" }}>complicated</span></span>
+        <span><span style={{ color: "#999", fontWeight: 600 }}>N/A</span> <span style={{ color: "#8A7E72" }}>rejects framing</span></span>
+      </div>
+
+      <MatrixView
+        onSelectPosition={handleSelectPosition}
+        selectedId={selectedPosition}
+        onSelectColumn={handleSelectColumn}
+        selectedColIdx={selectedCol}
+        mode={matrixMode}
+      />
+
+      <div ref={colRef}>
+        {matrixMode === "arguments" ? (
+          <ColumnDetail question={selectedQuestion} onClose={() => setSelectedCol(null)} />
+        ) : (
+          <SystemDetail system={selectedSystem} positions={POSITIONS} onClose={() => setSelectedCol(null)} />
+        )}
+      </div>
+
+      <div ref={detailRef}>
+        <PositionDetail position={selectedPos} onClose={() => setSelectedPosition(null)} />
+      </div>
+    </div>
+  );
+}
+
 export default function MachineConsciousness() {
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [selectedCol, setSelectedCol] = useState(null);
@@ -1653,7 +1614,7 @@ export default function MachineConsciousness() {
                 color: "#4A4540", margin: 0
               }}>
                 {matrixMode === "arguments"
-                  ? "Seven discriminating questions — the decision points that separate Chalmers' eight positions. Each column represents a philosophical commitment; each subsumes several equivalent arguments. Click any column header to see what it contains. Click any row to expand the position."
+                  ? "Seven discriminating questions — the decision points that separate Chalmers' six positions. Each column represents a philosophical commitment; each subsumes several equivalent arguments. Click any column header to see what it contains. Click any row to expand the position."
                   : "Shift the matrix from abstract commitments to concrete verdicts. Each column is a candidate system — click any system header to see how the positions divide on LLMs, octopuses, thermometers, whole-brain emulations, microphysical primitives, and Block's China Brain."}
               </p>
               <div style={{
@@ -1736,8 +1697,8 @@ export default function MachineConsciousness() {
               <div className="reading-cards" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
                 {[
                   {
-                    title: "The Materialists (A, B, C)",
-                    desc: "Type-A closes the epistemic gap entirely — consciousness just IS function. Type-B concedes a real epistemic gap but denies any ontological gap — consciousness is physical, the identity is a posteriori. Chalmers argues any 'type-C' deferral is unstable — it collapses into A, B, or something non-materialist.",
+                    title: "The Materialists (A, B)",
+                    desc: "Type-A closes the epistemic gap entirely — consciousness just IS function. Type-B concedes a real epistemic gap but denies any ontological gap — consciousness is physical, the identity is a posteriori.",
                     border: "#4A3728"
                   },
                   {
@@ -1746,8 +1707,8 @@ export default function MachineConsciousness() {
                     border: "#6B2D48"
                   },
                   {
-                    title: "The Monisms (F, I)",
-                    desc: "Type-F (Russellian monism) fills the Russellian gap with phenomenal or protophenomenal intrinsic properties — preserving closure while respecting the explanatory gap. Its internal taxonomy is the richest: constitutive vs. non-constitutive, Russellian vs. non-Russellian, panpsychism vs. panprotopsychism. Type-I (idealism) inverts the framework entirely: the physical is constituted by consciousness. Chalmers considers Type-F the most promising option; the combination problem is its central challenge.",
+                    title: "The Monism (F)",
+                    desc: "Type-F (Russellian monism) fills the Russellian gap with phenomenal or protophenomenal intrinsic properties — preserving closure while respecting the explanatory gap. Its internal taxonomy is the richest: constitutive vs. non-constitutive, Russellian vs. non-Russellian, panpsychism vs. panprotopsychism. Chalmers considers Type-F the most promising option; the combination problem is its central challenge.",
                     border: "#5B4A00"
                   }
                 ].map((c, i) => (
@@ -1806,7 +1767,7 @@ export default function MachineConsciousness() {
                 consciousness is, which systems have it, or whether it matters.
               </p>
               <p style={{ margin: "0 0 24px 0" }}>
-                This site maps Chalmers' eight positions — Type-A, B, C, D, E, F, O, and I — against seven
+                This site maps Chalmers' six positions — Type-A, B, D, E, F, and O — against seven
                 discriminating questions. The questions are parsimonious: each is logically independent of the others,
                 and each subsumes several equivalent thought experiments and arguments. Together they
                 are sufficient to uniquely separate every position in the taxonomy.

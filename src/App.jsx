@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ConsciousnessQuiz from '../consciousness-quiz.jsx';
+import { MatrixSection } from '../machine-consciousness-chalmers.jsx';
 
 // ─────────────────────────────────────────────
 // Position data for the explorer
@@ -350,6 +351,7 @@ function App() {
 
   const navItems = [
     { key: "quiz", label: "Quiz" },
+    { key: "matrix", label: "Matrix" },
     { key: "positions", label: "Positions" },
     { key: "essays", label: "Essays" },
   ];
@@ -374,7 +376,7 @@ function App() {
       {/* Header */}
       <nav className="site-header" style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
-        padding: "0 36px", height: 52,
+        padding: "0 40px", height: 72,
         background: "rgba(250,249,247,0.92)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)",
         borderBottom: "1px solid #EDEAE6",
         display: "flex", alignItems: "center", justifyContent: "space-between"
@@ -382,8 +384,8 @@ function App() {
         <h2
           onClick={() => { setSection("quiz"); window.scrollTo(0, 0); }}
           style={{
-            fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 700,
-            color: "#1a1816", margin: 0, cursor: "pointer", letterSpacing: "-0.01em"
+            fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700,
+            color: "#1a1816", margin: 0, cursor: "pointer", letterSpacing: "0.01em"
           }}
         >Possible Minds</h2>
         <div style={{ display: "flex", gap: 4 }}>
@@ -393,7 +395,7 @@ function App() {
               <button key={item.key} onClick={() => { setSection(item.key); window.scrollTo(0, 0); }} style={{
                 background: active ? "#F0EEEB" : "transparent",
                 border: "none", borderRadius: 4, padding: "6px 14px", cursor: "pointer",
-                fontFamily: "'Cormorant Garamond', serif", fontSize: 14,
+                fontFamily: "'Cormorant Garamond', serif", fontSize: 16,
                 fontWeight: active ? 700 : 500,
                 color: active ? "#1a1816" : "#8A7E72",
                 transition: "all 0.15s"
@@ -404,8 +406,9 @@ function App() {
       </nav>
 
       {/* Content */}
-      <div style={{ paddingTop: 52 }}>
+      <div style={{ paddingTop: 72 }}>
         {section === "quiz" && <ConsciousnessQuiz />}
+        {section === "matrix" && <MatrixSection />}
         {section === "positions" && <PositionsExplorer />}
         {section === "essays" && <EssaysSection />}
       </div>

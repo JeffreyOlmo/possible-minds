@@ -843,10 +843,11 @@ function StepPage({ step, answer, onAnswer, onNext, onBack, stepIndex, totalStep
   return (
     <div style={{
       minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center",
-      padding: "40px 24px",
+      padding: "40px 24px", position: "relative", overflow: "hidden",
       opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(8px)",
       transition: "opacity 0.5s ease, transform 0.5s ease"
     }}>
+      <GradientOrbs />
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, height: 2, background: "#EDEAE6" }}>
         <div style={{ height: "100%", background: "#5B3A29", width: `${((stepIndex + 1) / totalSteps) * 100}%`, transition: "width 0.4s ease" }} />
       </div>
@@ -1057,33 +1058,99 @@ function ResultPage({ answers, onRestart }) {
 // Intro
 // ─────────────────────────────────────────────
 
+function GradientOrbs() {
+  return (
+    <>
+      <style>{`
+        @keyframes orbDrift1 {
+          0%   { transform: translate(0, 0) scale(1); }
+          33%  { transform: translate(8%, 12%) scale(1.05); }
+          66%  { transform: translate(-5%, 6%) scale(0.95); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes orbDrift2 {
+          0%   { transform: translate(0, 0) scale(1); }
+          33%  { transform: translate(-10%, -8%) scale(1.08); }
+          66%  { transform: translate(6%, -4%) scale(0.97); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+        @keyframes orbDrift3 {
+          0%   { transform: translate(0, 0) scale(1); }
+          33%  { transform: translate(12%, -6%) scale(0.93); }
+          66%  { transform: translate(-8%, 10%) scale(1.06); }
+          100% { transform: translate(0, 0) scale(1); }
+        }
+      `}</style>
+      <div style={{
+        position: "absolute", top: "-30%", left: "-15%", width: "70%", height: "70%",
+        background: "radial-gradient(ellipse at center, rgba(91,58,41,0.16) 0%, rgba(91,58,41,0.056) 40%, transparent 70%)",
+        pointerEvents: "none", filter: "blur(40px)",
+        animation: "orbDrift1 20s ease-in-out infinite"
+      }} />
+      <div style={{
+        position: "absolute", bottom: "-25%", right: "-15%", width: "65%", height: "65%",
+        background: "radial-gradient(ellipse at center, rgba(27,58,107,0.128) 0%, rgba(27,58,107,0.04) 40%, transparent 70%)",
+        pointerEvents: "none", filter: "blur(40px)",
+        animation: "orbDrift2 25s ease-in-out infinite"
+      }} />
+      <div style={{
+        position: "absolute", top: "20%", right: "10%", width: "50%", height: "50%",
+        background: "radial-gradient(ellipse at center, rgba(91,74,0,0.112) 0%, rgba(91,74,0,0.032) 40%, transparent 65%)",
+        pointerEvents: "none", filter: "blur(30px)",
+        animation: "orbDrift3 18s ease-in-out infinite"
+      }} />
+    </>
+  );
+}
+
 function IntroPage({ onStart }) {
   return (
     <div style={{
       minHeight: "100vh", display: "flex", flexDirection: "column",
-      alignItems: "center", justifyContent: "center", padding: "60px 24px"
+      alignItems: "center", justifyContent: "center", padding: "60px 24px",
+      position: "relative", overflow: "hidden"
     }}>
+      <GradientOrbs />
+
+      <div style={{
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11, fontWeight: 500,
+        letterSpacing: "0.25em", textTransform: "uppercase", color: "#8A7E72",
+        marginBottom: 32, position: "relative"
+      }}>Possible Minds</div>
+
       <h1 style={{
-        fontFamily: "'Cormorant Garamond', serif", fontSize: 56, fontWeight: 700,
+        fontFamily: "'Cormorant Garamond', serif", fontSize: 64, fontWeight: 700,
         color: "#1a1816", margin: "0 0 20px 0", textAlign: "center", lineHeight: 1.08,
-        letterSpacing: "-0.025em", maxWidth: 540
+        letterSpacing: "-0.025em", maxWidth: 600, position: "relative"
       }}>What do you believe about consciousness?</h1>
 
-      <div style={{ width: 40, height: 2, background: "#D4C9BC", margin: "24px 0" }} />
+      <div style={{
+        width: 60, height: 2, margin: "28px 0",
+        background: "linear-gradient(90deg, #5B3A29, #1B3A6B, #5B4A00)",
+        borderRadius: 1, position: "relative"
+      }} />
 
       <p style={{
-        fontFamily: "'Source Serif 4', serif", fontSize: 17, lineHeight: 1.85,
-        color: "#4A4540", maxWidth: 440, textAlign: "center", margin: "0 0 44px"
+        fontFamily: "'Source Serif 4', serif", fontSize: 18, lineHeight: 1.85,
+        color: "#4A4540", maxWidth: 480, textAlign: "center", margin: "0 0 48px",
+        position: "relative"
       }}>
         A series of thought experiments — each a branching point in the topology of positions on the mind-body problem. Your answers trace a path through the decision tree.
       </p>
 
       <button onClick={onStart} style={{
-        background: "#1a1816", border: "none", borderRadius: 6,
-        padding: "14px 44px", cursor: "pointer",
-        fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700,
-        color: "#F8F6F3", letterSpacing: "0.04em"
-      }}>Begin</button>
+        background: "linear-gradient(135deg, #1a1816, #2D2A26)",
+        border: "none", borderRadius: 8,
+        padding: "16px 52px", cursor: "pointer",
+        fontFamily: "'Cormorant Garamond', serif", fontSize: 19, fontWeight: 700,
+        color: "#F8F6F3", letterSpacing: "0.04em",
+        boxShadow: "0 4px 24px rgba(26,24,22,0.15)",
+        transition: "transform 0.15s, box-shadow 0.15s",
+        position: "relative"
+      }}
+        onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 6px 32px rgba(26,24,22,0.2)"; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(26,24,22,0.15)"; }}
+      >Begin</button>
     </div>
   );
 }
