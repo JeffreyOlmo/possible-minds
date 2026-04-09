@@ -163,13 +163,13 @@ function PositionDetail({ position, onBack }) {
       `}</style>
       <div style={{
         position: "absolute", top: "-10%", right: "-5%", width: "55%", height: "55%",
-        background: `radial-gradient(ellipse at center, rgba(${r},${g},${b},0.10) 0%, rgba(${r},${g},${b},0.03) 40%, transparent 70%)`,
+        background: `radial-gradient(ellipse at center, rgba(${r},${g},${b},0.121) 0%, rgba(${r},${g},${b},0.036) 40%, transparent 70%)`,
         pointerEvents: "none", filter: "blur(40px)",
         animation: "orbDrift1 20s ease-in-out infinite"
       }} />
       <div style={{
         position: "absolute", bottom: "5%", left: "-5%", width: "50%", height: "50%",
-        background: `radial-gradient(ellipse at center, rgba(${r},${g},${b},0.07) 0%, rgba(${r},${g},${b},0.02) 40%, transparent 70%)`,
+        background: `radial-gradient(ellipse at center, rgba(${r},${g},${b},0.085) 0%, rgba(${r},${g},${b},0.024) 40%, transparent 70%)`,
         pointerEvents: "none", filter: "blur(40px)",
         animation: "orbDrift2 25s ease-in-out infinite"
       }} />
